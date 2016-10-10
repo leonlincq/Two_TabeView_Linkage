@@ -44,7 +44,7 @@
         //设置约束
         [self.channelView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.trailing.equalTo(self);
-            make.top.equalTo(self).offset(20);
+            make.top.equalTo(self);
             make.height.mas_equalTo(44);
         }];
         
@@ -54,9 +54,9 @@
         }];
         
         [self.underLine mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(2);
+            make.height.mas_equalTo(3);
             make.leading.bottom.equalTo(self.channelView);
-            make.width.mas_equalTo(60);
+            make.width.mas_equalTo(SCREEN_WIDTH/3);
         }];
     }
     return self;
@@ -86,7 +86,7 @@
         _channelView = [[UIScrollView alloc] init];
         
         //创建按钮
-        CGFloat buttonWidth = 60;
+        CGFloat buttonWidth = SCREEN_WIDTH/3;
         CGFloat buttonHeight = 44;
         CGFloat buttonY = 0;
 
@@ -126,7 +126,7 @@
     {
         //流水布局
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-        flowLayout.itemSize = CGSizeMake(self.frame.size.width, self.frame.size.height - 64);
+        flowLayout.itemSize = CGSizeMake(self.frame.size.width, self.frame.size.height - 44);
         
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         flowLayout.minimumLineSpacing = 0;
@@ -171,7 +171,10 @@
 {
     UICollectionViewCell *item = [collectionView dequeueReusableCellWithReuseIdentifier:HomeItemReuseIdentifier forIndexPath:indexPath];
     
-    item.contentView.backgroundColor = [UIColor colorWithRed:((float)arc4random_uniform(256) / 255.0) green:((float)arc4random_uniform(256) / 255.0) blue:((float)arc4random_uniform(256) / 255.0) alpha:1.0];
+    collectionView.backgroundColor = [UIColor whiteColor];
+    
+    _myBlock(collectionView,indexPath);
+    
     return item;
 }
 

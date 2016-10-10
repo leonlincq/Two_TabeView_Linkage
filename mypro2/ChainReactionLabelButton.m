@@ -18,7 +18,7 @@
     if (self = [super initWithFrame:frame])
     {
         self.textAlignment = NSTextAlignmentCenter; //文字居中
-        self.font = [UIFont systemFontOfSize:20];   //字体大小
+        self.font = [UIFont systemFontOfSize:20.0];   //字体大小
         self.userInteractionEnabled = YES;
         self.textScale = 0;
     }

@@ -31,6 +31,9 @@
 		25231CC81DAB81E0009DD12A /* Pods-LianDong-resources.sh in Resources */ = {isa = PBXBuildFile; fileRef = 25231CB21DAB81E0009DD12A /* Pods-LianDong-resources.sh */; };
 		25231CC91DAB81E0009DD12A /* Pods-LianDong.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 25231CB31DAB81E0009DD12A /* Pods-LianDong.debug.xcconfig */; };
 		25231CCA1DAB81E0009DD12A /* Pods-LianDong.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 25231CB41DAB81E0009DD12A /* Pods-LianDong.release.xcconfig */; };
+		25231CD61DAB8418009DD12A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25231CD41DAB8418009DD12A /* RootViewController.m */; };
+		25231CD71DAB8418009DD12A /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25231CD51DAB8418009DD12A /* RootViewController.xib */; };
+		25231CDC1DAB8BBF009DD12A /* LinkageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25231CDB1DAB8BBF009DD12A /* LinkageView.m */; };
 		25688F301DAA20CB002AA448 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25688F2F1DAA20CB002AA448 /* main.m */; };
 		25688F331DAA20CB002AA448 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25688F321DAA20CB002AA448 /* AppDelegate.m */; };
 		25688F361DAA20CB002AA448 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25688F351DAA20CB002AA448 /* ViewController.m */; };
@@ -151,6 +154,11 @@
 		25231CB21DAB81E0009DD12A /* Pods-LianDong-resources.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "Pods-LianDong-resources.sh"; sourceTree = "<group>"; };
 		25231CB31DAB81E0009DD12A /* Pods-LianDong.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Pods-LianDong.debug.xcconfig"; sourceTree = "<group>"; };
 		25231CB41DAB81E0009DD12A /* Pods-LianDong.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Pods-LianDong.release.xcconfig"; sourceTree = "<group>"; };
+		25231CD31DAB8418009DD12A /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		25231CD41DAB8418009DD12A /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		25231CD51DAB8418009DD12A /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
+		25231CDA1DAB8BBF009DD12A /* LinkageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkageView.h; sourceTree = "<group>"; };
+		25231CDB1DAB8BBF009DD12A /* LinkageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkageView.m; sourceTree = "<group>"; };
 		25688F2B1DAA20CB002AA448 /* mypro2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mypro2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25688F2F1DAA20CB002AA448 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		25688F311DAA20CB002AA448 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -429,11 +437,14 @@
 				25688F3A1DAA20CB002AA448 /* Assets.xcassets */,
 				25688F641DAA2218002AA448 /* PrefixHeader.pch */,
 				25688F661DAA2539002AA448 /* PublicHeadClass.h */,
-				25231C611DAB81C5009DD12A /* 第三方库 */,
+				25231CD31DAB8418009DD12A /* RootViewController.h */,
+				25231CD41DAB8418009DD12A /* RootViewController.m */,
+				25231CD51DAB8418009DD12A /* RootViewController.xib */,
 				25231C561DAB5C94009DD12A /* ScrollView */,
 				25688F701DAA2D9D002AA448 /* Linkage */,
 				25688F3C1DAA20CB002AA448 /* LaunchScreen.storyboard */,
 				25688F3F1DAA20CB002AA448 /* Info.plist */,
+				25231C611DAB81C5009DD12A /* 第三方库 */,
 				25688F2E1DAA20CB002AA448 /* Supporting Files */,
 			);
 			path = mypro2;
@@ -468,6 +479,8 @@
 		25688F701DAA2D9D002AA448 /* Linkage */ = {
 			isa = PBXGroup;
 			children = (
+				25231CDA1DAB8BBF009DD12A /* LinkageView.h */,
+				25231CDB1DAB8BBF009DD12A /* LinkageView.m */,
 				25688F611DAA21B2002AA448 /* LinkageTableViewController.h */,
 				25688F621DAA21B3002AA448 /* LinkageTableViewController.m */,
 				25688F671DAA2644002AA448 /* LeftTableViewCell.h */,
@@ -610,6 +623,7 @@
 			files = (
 				25688F3E1DAA20CB002AA448 /* LaunchScreen.storyboard in Resources */,
 				25231CC71DAB81E0009DD12A /* Pods-LianDong-frameworks.sh in Resources */,
+				25231CD71DAB8418009DD12A /* RootViewController.xib in Resources */,
 				25688F3B1DAA20CB002AA448 /* Assets.xcassets in Resources */,
 				25231CC31DAB81E0009DD12A /* Masonry.xcconfig in Resources */,
 				25231CC81DAB81E0009DD12A /* Pods-LianDong-resources.sh in Resources */,
@@ -645,6 +659,7 @@
 			files = (
 				25231CBF1DAB81E0009DD12A /* View+MASAdditions.m in Sources */,
 				25688F6C1DAA265A002AA448 /* RightTableViewCell.m in Sources */,
+				25231CDC1DAB8BBF009DD12A /* LinkageView.m in Sources */,
 				25688F6F1DAA27F5002AA448 /* CategoryModel.m in Sources */,
 				25231CC11DAB81E0009DD12A /* README.md in Sources */,
 				25231CC41DAB81E0009DD12A /* Pods-LianDong-acknowledgements.markdown in Sources */,
@@ -657,6 +672,7 @@
 				25231CB71DAB81E0009DD12A /* MASCompositeConstraint.m in Sources */,
 				25231C591DAB5F7B009DD12A /* ChainReactionView.m in Sources */,
 				25688F331DAA20CB002AA448 /* AppDelegate.m in Sources */,
+				25231CD61DAB8418009DD12A /* RootViewController.m in Sources */,
 				25231CB91DAB81E0009DD12A /* MASConstraintMaker.m in Sources */,
 				25231CB81DAB81E0009DD12A /* MASConstraint.m in Sources */,
 				25231CBE1DAB81E0009DD12A /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
