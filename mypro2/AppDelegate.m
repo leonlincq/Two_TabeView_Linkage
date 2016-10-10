@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "LinkageTabelViewController.h"
+#import "LinkageTableViewController.h"
 
 
 @interface AppDelegate ()
@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.window.rootViewController = [[LinkageTabelViewController alloc]init];
+    self.window.rootViewController = [[LinkageTableViewController alloc]init];
     
     return YES;
 }

@@ -1,18 +1,19 @@
 //
-//  LinkageTabelViewController.m
+//  LinkageTableViewController.m
 //  mypro2
 //
 //  Created by etcxm on 16/10/9.
 //  Copyright © 2016年 etc. All rights reserved.
 //
 
-#import "LinkageTabelViewController.h"
+#import "LinkageTableViewController.h"
 #import "LeftTableViewCell.h"
 #import "RightTableViewCell.h"
 #import "CategoryModel.h"
 #import "TableViewHeaderView.h"
+#import "ChainReactionView.h"
 
-@interface LinkageTabelViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface LinkageTableViewController () <UITableViewDelegate, UITableViewDataSource>
 {
     NSInteger _selectIndex;
     BOOL _isScrollDown;
@@ -22,27 +23,38 @@
 @property (nonatomic, strong) NSMutableArray *foodData;
 @property (nonatomic, strong) UITableView *leftTableView;
 @property (nonatomic, strong) UITableView *rightTableView;
+@property (nonatomic, strong) UIView *shopView;
+
+
 
 @property (nonatomic, strong) NSArray *fontName;
 @property (nonatomic, strong) NSMutableArray *allFont;
 
 @end
 
-@implementation LinkageTabelViewController
+@implementation LinkageTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    
+//    self.view.backgroundColor = [UIColor whiteColor];
+//    
+//    _selectIndex = 0;
+//    _isScrollDown = YES;
+//    
+//    [self.view addSubview:self.leftTableView];
+//    [self.view addSubview:self.rightTableView];
+//    [self.view addSubview:self.shopView];
+//    
+//    [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    _selectIndex = 0;
-    _isScrollDown = YES;
+    ChainReactionView *chainView = [[ChainReactionView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 300)];
     
-    [self.view addSubview:self.leftTableView];
-    [self.view addSubview:self.rightTableView];
+    [self.view addSubview:chainView];
     
-    [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
     
     
 }
@@ -58,7 +70,7 @@
 
 - (NSArray *)fontName
 {
-    if (_fontName == nil)
+    if (!_fontName)
     {
         _fontName = [UIFont familyNames];
     }
@@ -67,7 +79,7 @@
 
 - (NSMutableArray *)allFont
 {
-    if (_allFont == nil)
+    if (!_allFont)
     {
         _allFont = [[NSMutableArray alloc]init];
         
@@ -82,7 +94,7 @@
 
 - (NSMutableArray *)categoryData
 {
-    if (_categoryData == nil)
+    if (!_categoryData)
     {
         _categoryData = [NSMutableArray array];
     }
@@ -91,7 +103,7 @@
 
 - (NSMutableArray *)foodData
 {
-    if (_foodData == nil)
+    if (!_foodData)
     {
         _foodData = [NSMutableArray array];
     }
@@ -100,9 +112,9 @@
 
 - (UITableView *)leftTableView
 {
-    if (_leftTableView == nil)
+    if (!_leftTableView)
     {
-        _leftTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 80, SCREEN_HEIGHT)];
+        _leftTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 150 + 0, 80, SCREEN_HEIGHT) style:UITableViewStylePlain];
         _leftTableView.delegate = self;
         _leftTableView.dataSource = self;
         _leftTableView.rowHeight = 55;
@@ -116,9 +128,9 @@
 
 - (UITableView *)rightTableView
 {
-    if (_rightTableView == nil)
+    if (!_rightTableView)
     {
-        _rightTableView = [[UITableView alloc] initWithFrame:CGRectMake(80, 64, SCREEN_WIDTH - 80, SCREEN_HEIGHT - 64)];
+        _rightTableView = [[UITableView alloc]initWithFrame:CGRectMake(80,150 + 0, SCREEN_WIDTH - 80, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
         _rightTableView.delegate = self;
         _rightTableView.dataSource = self;
         _rightTableView.rowHeight = 80;
@@ -126,6 +138,17 @@
         [_rightTableView registerClass:[RightTableViewCell class] forCellReuseIdentifier:RightTableView_CellIdentifier];
     }
     return _rightTableView;
+}
+
+- (UIView *)shopView
+{
+    if (!_shopView)
+    {
+        _shopView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,150)];
+        _shopView.backgroundColor = [UIColor orangeColor];
+        _shopView.alpha = 0.7;
+    }
+    return _shopView;
 }
 
 #pragma mark - UITableView代理
@@ -171,8 +194,10 @@
     if (_leftTableView == tableView)
     {
         LeftTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LeftTableView_CellIdentifier forIndexPath:indexPath];
+
 //        FoodModel *model = self.categoryData[indexPath.row];
 //        cell.name.text = model.name;
+        
         cell.cellLabel.text = self.fontName[indexPath.row];
         return cell;
     }

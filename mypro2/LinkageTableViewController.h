@@ -1,5 +1,5 @@
 //
-//  LinkageTabelViewController.h
+//  LinkageTableViewController.h
 //  mypro2
 //
 //  Created by etcxm on 16/10/9.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LinkageTabelViewController : UIViewController
+@interface LinkageTableViewController : UIViewController
 
 @end
