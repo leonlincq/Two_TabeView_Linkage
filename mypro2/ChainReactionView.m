@@ -173,7 +173,7 @@
     
     collectionView.backgroundColor = [UIColor whiteColor];
     
-    _myBlock(collectionView,indexPath);
+    _myCollectionCellBlock(collectionView,indexPath);
     
     return item;
 }

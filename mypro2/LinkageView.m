@@ -246,6 +246,12 @@
 {
     if (_leftTableView == tableView)
     {
+#if 1
+        if ([UIFont fontNamesForFamilyName:self.fontName[indexPath.row]].count == 0)
+        {
+            return;
+        }
+#endif
         _selectIndex = indexPath.row;
         [_rightTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:_selectIndex] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }

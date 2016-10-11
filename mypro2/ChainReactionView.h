@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^myCollectionViewBlock)(UICollectionView *collectionView,NSIndexPath *indexPath);
+typedef void(^CollectionCellBlock)(UICollectionView *collectionView,NSIndexPath *indexPath);
 
 @interface ChainReactionView : UIView
 
-@property (nonatomic,strong) myCollectionViewBlock myBlock;
+@property (nonatomic,strong) CollectionCellBlock myCollectionCellBlock;
 
 @property (nonatomic, strong) NSArray *allNameArray;
 
