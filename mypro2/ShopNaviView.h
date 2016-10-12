@@ -8,10 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol myNaviBackDelegate <NSObject>
+
+-(void)dismissToHome;
+
+@end
+
+
 @interface ShopNaviView : UIView
 
+@property (nonatomic,strong) id<myNaviBackDelegate> backdelegate;
+#ifdef OBSERVE
+@property (nonatomic,assign) BOOL isReturn;
+#endif
 @property (nonatomic,copy) NSString *shopName;
 
-@property (nonatomic,copy) NSString *isReturn;
+//@property (nonatomic,copy) NSString *isReturn;
 
 @end

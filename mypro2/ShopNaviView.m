@@ -25,8 +25,9 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        _isReturn = @"NO";
-        
+#ifdef OBSERVE
+        self.isReturn = NO;
+#endif
         [self addSubview:self.shopNamelabel];
         [self addSubview:self.backButton];
         
@@ -75,8 +76,11 @@
 #pragma mark - 返回图片点击
 - (void)backTap:(UITapGestureRecognizer *)recognizer
 {
-    self.isReturn = @"YES";
-    NSLog(@"123");
+#ifdef OBSERVE
+    self.isReturn = YES;
+#endif
+    NSLog(@"点击");
+   [self.backdelegate dismissToHome];
 }
 
 

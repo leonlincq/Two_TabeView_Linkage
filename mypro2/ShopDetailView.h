@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SectionThirdModel.h"
 
 @interface ShopDetailView : UIView
+
+@property (nonatomic,strong) SectionThirdModel *shopData;
 
 @end

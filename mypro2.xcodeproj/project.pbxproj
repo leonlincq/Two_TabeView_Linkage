@@ -43,7 +43,6 @@
 		25688F491DAA20CB002AA448 /* mypro2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25688F481DAA20CB002AA448 /* mypro2Tests.m */; };
 		25688F541DAA20CB002AA448 /* mypro2UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25688F531DAA20CB002AA448 /* mypro2UITests.m */; };
 		25688F691DAA2644002AA448 /* LeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25688F681DAA2644002AA448 /* LeftTableViewCell.m */; };
-		25688F6C1DAA265A002AA448 /* RightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25688F6B1DAA265A002AA448 /* RightTableViewCell.m */; };
 		25688F6F1DAA27F5002AA448 /* CategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 25688F6E1DAA27F5002AA448 /* CategoryModel.m */; };
 		25688F731DAA2DD9002AA448 /* TableViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25688F721DAA2DD9002AA448 /* TableViewHeaderView.m */; };
 		25DE291F1DAC7AC100ABFCFA /* ShopDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DE291E1DAC7AC100ABFCFA /* ShopDetailView.m */; };
@@ -52,6 +51,16 @@
 		25DE2A4C1DACD49600ABFCFA /* tempViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25DE2A4A1DACD49600ABFCFA /* tempViewController.xib */; };
 		25DE2A571DACD89F00ABFCFA /* ShopNaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DE2A561DACD89F00ABFCFA /* ShopNaviView.m */; };
 		25DE2A5B1DACE08300ABFCFA /* NaviBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 25DE2A5A1DACE08300ABFCFA /* NaviBackButton.png */; };
+		25EAF62C1DADFED100C3A6A9 /* ShopToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EAF62B1DADFED100C3A6A9 /* ShopToolbar.m */; };
+		25EAF6301DAE086E00C3A6A9 /* back_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF62F1DAE086E00C3A6A9 /* back_cross.png */; };
+		25EAF6361DAE197200C3A6A9 /* RightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EAF6341DAE197200C3A6A9 /* RightTableViewCell.m */; };
+		25EAF6371DAE197200C3A6A9 /* RightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF6351DAE197200C3A6A9 /* RightTableViewCell.xib */; };
+		25EAF63A1DAE1C6500C3A6A9 /* subGoods.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF6381DAE1C6500C3A6A9 /* subGoods.png */; };
+		25EAF63B1DAE1C6500C3A6A9 /* addGoods.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF6391DAE1C6500C3A6A9 /* addGoods.png */; };
+		25EAF63E1DAE1E1800C3A6A9 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF63C1DAE1E1800C3A6A9 /* add.png */; };
+		25EAF6411DAE1F0100C3A6A9 /* sub.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF6401DAE1F0100C3A6A9 /* sub.png */; };
+		25EAF6441DAE20CD00C3A6A9 /* SectionThirdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EAF6421DAE20CD00C3A6A9 /* SectionThirdModel.m */; };
+		25EAF6461DAE237A00C3A6A9 /* mdl.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF6451DAE237A00C3A6A9 /* mdl.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,8 +193,6 @@
 		25688F661DAA2539002AA448 /* PublicHeadClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicHeadClass.h; sourceTree = "<group>"; };
 		25688F671DAA2644002AA448 /* LeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewCell.h; sourceTree = "<group>"; };
 		25688F681DAA2644002AA448 /* LeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewCell.m; sourceTree = "<group>"; };
-		25688F6A1DAA265A002AA448 /* RightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightTableViewCell.h; sourceTree = "<group>"; };
-		25688F6B1DAA265A002AA448 /* RightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightTableViewCell.m; sourceTree = "<group>"; };
 		25688F6D1DAA27F5002AA448 /* CategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryModel.h; sourceTree = "<group>"; };
 		25688F6E1DAA27F5002AA448 /* CategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryModel.m; sourceTree = "<group>"; };
 		25688F711DAA2DD9002AA448 /* TableViewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewHeaderView.h; sourceTree = "<group>"; };
@@ -200,6 +207,19 @@
 		25DE2A551DACD89F00ABFCFA /* ShopNaviView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopNaviView.h; sourceTree = "<group>"; };
 		25DE2A561DACD89F00ABFCFA /* ShopNaviView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopNaviView.m; sourceTree = "<group>"; };
 		25DE2A5A1DACE08300ABFCFA /* NaviBackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NaviBackButton.png; sourceTree = "<group>"; };
+		25EAF62A1DADFED100C3A6A9 /* ShopToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopToolbar.h; sourceTree = "<group>"; };
+		25EAF62B1DADFED100C3A6A9 /* ShopToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopToolbar.m; sourceTree = "<group>"; };
+		25EAF62F1DAE086E00C3A6A9 /* back_cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_cross.png; sourceTree = "<group>"; };
+		25EAF6331DAE197200C3A6A9 /* RightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightTableViewCell.h; sourceTree = "<group>"; };
+		25EAF6341DAE197200C3A6A9 /* RightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightTableViewCell.m; sourceTree = "<group>"; };
+		25EAF6351DAE197200C3A6A9 /* RightTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightTableViewCell.xib; sourceTree = "<group>"; };
+		25EAF6381DAE1C6500C3A6A9 /* subGoods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = subGoods.png; sourceTree = "<group>"; };
+		25EAF6391DAE1C6500C3A6A9 /* addGoods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addGoods.png; sourceTree = "<group>"; };
+		25EAF63C1DAE1E1800C3A6A9 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		25EAF6401DAE1F0100C3A6A9 /* sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sub.png; sourceTree = "<group>"; };
+		25EAF6421DAE20CD00C3A6A9 /* SectionThirdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionThirdModel.m; sourceTree = "<group>"; };
+		25EAF6431DAE20CD00C3A6A9 /* SectionThirdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionThirdModel.h; sourceTree = "<group>"; };
+		25EAF6451DAE237A00C3A6A9 /* mdl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mdl.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,7 +462,13 @@
 		25688F2D1DAA20CB002AA448 /* mypro2 */ = {
 			isa = PBXGroup;
 			children = (
+				25EAF6451DAE237A00C3A6A9 /* mdl.png */,
 				25DE2A5A1DACE08300ABFCFA /* NaviBackButton.png */,
+				25EAF62F1DAE086E00C3A6A9 /* back_cross.png */,
+				25EAF6381DAE1C6500C3A6A9 /* subGoods.png */,
+				25EAF6391DAE1C6500C3A6A9 /* addGoods.png */,
+				25EAF63C1DAE1E1800C3A6A9 /* add.png */,
+				25EAF6401DAE1F0100C3A6A9 /* sub.png */,
 				25688F311DAA20CB002AA448 /* AppDelegate.h */,
 				25688F321DAA20CB002AA448 /* AppDelegate.m */,
 				25688F341DAA20CB002AA448 /* ViewController.h */,
@@ -491,10 +517,11 @@
 			children = (
 				25231CDA1DAB8BBF009DD12A /* LinkageView.h */,
 				25231CDB1DAB8BBF009DD12A /* LinkageView.m */,
+				25EAF6331DAE197200C3A6A9 /* RightTableViewCell.h */,
+				25EAF6341DAE197200C3A6A9 /* RightTableViewCell.m */,
+				25EAF6351DAE197200C3A6A9 /* RightTableViewCell.xib */,
 				25688F671DAA2644002AA448 /* LeftTableViewCell.h */,
 				25688F681DAA2644002AA448 /* LeftTableViewCell.m */,
-				25688F6A1DAA265A002AA448 /* RightTableViewCell.h */,
-				25688F6B1DAA265A002AA448 /* RightTableViewCell.m */,
 				25688F711DAA2DD9002AA448 /* TableViewHeaderView.h */,
 				25688F721DAA2DD9002AA448 /* TableViewHeaderView.m */,
 				25688F6D1DAA27F5002AA448 /* CategoryModel.h */,
@@ -529,12 +556,15 @@
 				25231CD31DAB8418009DD12A /* RootViewController.h */,
 				25231CD41DAB8418009DD12A /* RootViewController.m */,
 				25231CD51DAB8418009DD12A /* RootViewController.xib */,
+				25EAF6421DAE20CD00C3A6A9 /* SectionThirdModel.m */,
+				25EAF6431DAE20CD00C3A6A9 /* SectionThirdModel.h */,
 				25231C611DAB81C5009DD12A /* 第三方库 */,
 				25688F701DAA2D9D002AA448 /* Linkage */,
 				25231C561DAB5C94009DD12A /* ScrollView */,
 				25DE2A4F1DACD52E00ABFCFA /* ShopNaviView */,
-				25DE291B1DAC794800ABFCFA /* ShopDetailView */,
 				25DE29181DAC793100ABFCFA /* ShopCarView */,
+				25DE291B1DAC794800ABFCFA /* ShopDetailView */,
+				25EAF6271DADFEA400C3A6A9 /* ShopDetailButton */,
 			);
 			name = ShopAndGoods;
 			sourceTree = "<group>";
@@ -546,6 +576,15 @@
 				25DE2A561DACD89F00ABFCFA /* ShopNaviView.m */,
 			);
 			name = ShopNaviView;
+			sourceTree = "<group>";
+		};
+		25EAF6271DADFEA400C3A6A9 /* ShopDetailButton */ = {
+			isa = PBXGroup;
+			children = (
+				25EAF62A1DADFED100C3A6A9 /* ShopToolbar.h */,
+				25EAF62B1DADFED100C3A6A9 /* ShopToolbar.m */,
+			);
+			name = ShopDetailButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -674,17 +713,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25EAF6461DAE237A00C3A6A9 /* mdl.png in Resources */,
 				25688F3E1DAA20CB002AA448 /* LaunchScreen.storyboard in Resources */,
 				25231CC71DAB81E0009DD12A /* Pods-LianDong-frameworks.sh in Resources */,
 				25231CD71DAB8418009DD12A /* RootViewController.xib in Resources */,
 				25688F3B1DAA20CB002AA448 /* Assets.xcassets in Resources */,
+				25EAF6411DAE1F0100C3A6A9 /* sub.png in Resources */,
+				25EAF63B1DAE1C6500C3A6A9 /* addGoods.png in Resources */,
 				25231CC31DAB81E0009DD12A /* Masonry.xcconfig in Resources */,
 				25231CC81DAB81E0009DD12A /* Pods-LianDong-resources.sh in Resources */,
 				25DE2A5B1DACE08300ABFCFA /* NaviBackButton.png in Resources */,
 				25688F391DAA20CB002AA448 /* Main.storyboard in Resources */,
+				25EAF6371DAE197200C3A6A9 /* RightTableViewCell.xib in Resources */,
+				25EAF63E1DAE1E1800C3A6A9 /* add.png in Resources */,
+				25EAF63A1DAE1C6500C3A6A9 /* subGoods.png in Resources */,
 				25231CB51DAB81E0009DD12A /* Manifest.lock in Resources */,
 				25231CC91DAB81E0009DD12A /* Pods-LianDong.debug.xcconfig in Resources */,
 				25231CB61DAB81E0009DD12A /* LICENSE in Resources */,
+				25EAF6301DAE086E00C3A6A9 /* back_cross.png in Resources */,
 				25DE2A4C1DACD49600ABFCFA /* tempViewController.xib in Resources */,
 				25231CCA1DAB81E0009DD12A /* Pods-LianDong.release.xcconfig in Resources */,
 				25231CC51DAB81E0009DD12A /* Pods-LianDong-acknowledgements.plist in Resources */,
@@ -713,7 +759,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				25231CBF1DAB81E0009DD12A /* View+MASAdditions.m in Sources */,
-				25688F6C1DAA265A002AA448 /* RightTableViewCell.m in Sources */,
 				25231CDC1DAB8BBF009DD12A /* LinkageView.m in Sources */,
 				25688F6F1DAA27F5002AA448 /* CategoryModel.m in Sources */,
 				25231CC11DAB81E0009DD12A /* README.md in Sources */,
@@ -725,6 +770,7 @@
 				25DE29221DAC7AD000ABFCFA /* ShopCarView.m in Sources */,
 				25231CBB1DAB81E0009DD12A /* MASViewAttribute.m in Sources */,
 				25231CB71DAB81E0009DD12A /* MASCompositeConstraint.m in Sources */,
+				25EAF6361DAE197200C3A6A9 /* RightTableViewCell.m in Sources */,
 				25231C591DAB5F7B009DD12A /* ChainReactionView.m in Sources */,
 				25688F331DAA20CB002AA448 /* AppDelegate.m in Sources */,
 				25DE2A571DACD89F00ABFCFA /* ShopNaviView.m in Sources */,
@@ -732,6 +778,7 @@
 				25231CD61DAB8418009DD12A /* RootViewController.m in Sources */,
 				25231CB91DAB81E0009DD12A /* MASConstraintMaker.m in Sources */,
 				25231CB81DAB81E0009DD12A /* MASConstraint.m in Sources */,
+				25EAF6441DAE20CD00C3A6A9 /* SectionThirdModel.m in Sources */,
 				25231CBE1DAB81E0009DD12A /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				25231CBA1DAB81E0009DD12A /* MASLayoutConstraint.m in Sources */,
 				25231CBD1DAB81E0009DD12A /* NSArray+MASAdditions.m in Sources */,
@@ -741,6 +788,7 @@
 				25688F301DAA20CB002AA448 /* main.m in Sources */,
 				25688F731DAA2DD9002AA448 /* TableViewHeaderView.m in Sources */,
 				25231CBC1DAB81E0009DD12A /* MASViewConstraint.m in Sources */,
+				25EAF62C1DADFED100C3A6A9 /* ShopToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

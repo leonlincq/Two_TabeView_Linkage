@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef void(^CollectionCellBlock)(UICollectionView *collectionView,NSIndexPath *indexPath);
+#import "LinkageView.h"
 
 @interface ChainReactionView : UIView
 
-@property (nonatomic,strong) CollectionCellBlock myCollectionCellBlock;
+@property (nonatomic,strong) LinkageView *linkView;
 
+@property (nonatomic, strong) UICollectionView *collectionView; //频道内容数据
 @property (nonatomic, strong) NSArray *allNameArray;
 
 @end

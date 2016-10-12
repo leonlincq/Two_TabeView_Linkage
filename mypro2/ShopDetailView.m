@@ -10,6 +10,17 @@
 
 @interface ShopDetailView ()
 
+@property (nonatomic,strong) UIImageView *storeImageView;
+
+@property (nonatomic,strong) UILabel *sentPriceTimeLabel;
+@property (nonatomic,strong) UILabel *welcomeLabel;
+
+
+@property (nonatomic,strong) UILabel *actionInfo1Label;
+@property (nonatomic,strong) UILabel *actionInfo2Label;
+@property (nonatomic,strong) UILabel *actionInfo3Label;
+@property (nonatomic,strong) UILabel *actionInfo4Label;
+
 @end
 
 
@@ -20,9 +31,108 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-
+        [self addSubview:self.storeImageView];
+        
+        [self addSubview:self.sentPriceTimeLabel];
+        [self addSubview:self.welcomeLabel];
+        
+        [self addSubview:self.actionInfo1Label];
+        [self addSubview:self.actionInfo2Label];
+        [self addSubview:self.actionInfo3Label];
+        [self addSubview:self.actionInfo4Label];
     }
     return self;
+}
+
+#pragma mark - 懒加载
+#define SPECE 10
+#define UPSPECE FALSE_NAVI_HEIGHT + STATUS_HEIGHT
+
+
+-(UIImageView *)storeImageView
+{
+    if (!_storeImageView)
+    {
+        _storeImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, UPSPECE + 5, 50, 50)];
+
+        _storeImageView.layer.masksToBounds = YES;
+        [_storeImageView.layer setCornerRadius:15.0];
+    }
+    return _storeImageView;
+}
+
+-(UILabel *)sentPriceTimeLabel
+{
+    if (!_sentPriceTimeLabel)
+    {
+        _sentPriceTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(SPECE+50+SPECE, UPSPECE + 5, self.frame.size.width - SPECE - 50 - SPECE- SPECE, 20)];
+        _sentPriceTimeLabel.textColor = [UIColor whiteColor];
+    }
+    return _sentPriceTimeLabel;
+}
+
+-(UILabel *)welcomeLabel
+{
+    if (!_welcomeLabel)
+    {
+        _welcomeLabel = [[UILabel alloc]initWithFrame:CGRectMake(SPECE+50+SPECE , UPSPECE + 10+5 + 20, self.frame.size.width - SPECE - 50 - SPECE- SPECE, 20)];
+        _welcomeLabel.text = @"本店欢迎您下单，用餐高峰期请提前下单";
+        _welcomeLabel.textColor = [UIColor whiteColor];
+    }
+    return _welcomeLabel;
+}
+
+-(UILabel *)actionInfo1Label
+{
+    if (!_actionInfo1Label)
+    {
+        _actionInfo1Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+50+5,  self.frame.size.width - SPECE - SPECE, 18)];
+        _actionInfo1Label.textColor = [UIColor whiteColor];
+    }
+    return _actionInfo1Label;
+}
+
+-(UILabel *)actionInfo2Label
+{
+    if (!_actionInfo2Label)
+    {
+        _actionInfo2Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+50+5 + 20,  self.frame.size.width - SPECE - SPECE, 18)];
+        _actionInfo2Label.textColor = [UIColor whiteColor];
+    }
+    return _actionInfo2Label;
+}
+
+-(UILabel *)actionInfo3Label
+{
+    if (!_actionInfo3Label)
+    {
+        _actionInfo3Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+50+5 + 20 + 20,  self.frame.size.width - SPECE - SPECE, 18)];
+        _actionInfo3Label.textColor = [UIColor whiteColor];
+    }
+    return _actionInfo3Label;
+}
+
+-(UILabel *)actionInfo4Label
+{
+    if (!_actionInfo4Label)
+    {
+        _actionInfo4Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+50+5 + 20 + 20 + 20,  self.frame.size.width - SPECE - SPECE, 18)];
+        _actionInfo4Label.textColor = [UIColor whiteColor];
+    }
+    return _actionInfo4Label;
+}
+
+-(void)setShopData:(SectionThirdModel *)model
+{
+    _shopData = model;
+
+    _storeImageView.image = [UIImage imageNamed:_shopData.storeImage];
+    
+    _sentPriceTimeLabel.text = [NSString stringWithFormat:@"起送 ￥%@ | 配送 ￥5 | 送达 %@分钟",_shopData.sellPrace,_shopData.maxTime];
+    _actionInfo1Label.text = [NSString stringWithFormat:@"🔴%@",_shopData.actionInfo1];
+    _actionInfo2Label.text = [NSString stringWithFormat:@"🔵%@",_shopData.actionInfo2];
+    _actionInfo3Label.text = [NSString stringWithFormat:@"🔴%@",_shopData.actionInfo3];
+    _actionInfo4Label.text = [NSString stringWithFormat:@"🔵%@",_shopData.actionInfo4];
 }
 
 

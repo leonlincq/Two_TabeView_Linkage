@@ -15,7 +15,6 @@
 @interface ChainReactionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong) UIScrollView *channelView;        //频道View
-@property (nonatomic, strong) UICollectionView *collectionView; //频道内容数据
 @property (nonatomic, strong) UIView *underLine;                //底部线条
 @property (nonatomic, strong) ChainReactionLabelButton *selectedLabel;  //选中的按钮
 @property (nonatomic, strong) NSMutableArray *labelArray;               //频道数组
@@ -48,16 +47,17 @@
             make.height.mas_equalTo(44);
         }];
         
-        [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.channelView.mas_bottom);
-            make.bottom.leading.trailing.equalTo(self);
-        }];
-        
         [self.underLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(3);
             make.leading.bottom.equalTo(self.channelView);
             make.width.mas_equalTo(SCREEN_WIDTH/3);
         }];
+        
+//        [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(self.channelView.mas_bottom);
+//            make.bottom.leading.trailing.equalTo(self);
+//        }];
+
     }
     return self;
 }
@@ -132,7 +132,7 @@
         flowLayout.minimumLineSpacing = 0;
         flowLayout.minimumInteritemSpacing = 0;
         
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 44, SCREEN_WIDTH, self.frame.size.height-44) collectionViewLayout:flowLayout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.pagingEnabled = YES;
@@ -173,10 +173,34 @@
     
     collectionView.backgroundColor = [UIColor whiteColor];
     
-    _myCollectionCellBlock(collectionView,indexPath);
+
+    switch (indexPath.row)
+    {
+        case 0:
+        {
+            //添加下面的两个TableView联动
+            _linkView = [[LinkageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,collectionView.frame.size.height)];
+
+            [collectionView addSubview:_linkView];
+        }
+            break;
+            
+        case 1:
+            
+            break;
+            
+        case 2:
+            
+            break;
+            
+        default:
+            break;
+    }
     
     return item;
 }
+
+
 
 #pragma mark - 收藏代理
 //=======================================
@@ -297,6 +321,13 @@
     
 }
 
+
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    _collectionView.frame = CGRectMake(0, 44, SCREEN_WIDTH,frame.size.height-44);
+    _linkView.frame = CGRectMake(0, 0, SCREEN_WIDTH,_collectionView.frame.size.height);
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

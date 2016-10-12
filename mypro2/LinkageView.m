@@ -99,7 +99,7 @@
 {
     if (!_leftTableView)
     {
-        _leftTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 80, SCREEN_HEIGHT) style:UITableViewStylePlain];
+        _leftTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 80, self.frame.size.height) style:UITableViewStylePlain];
         _leftTableView.delegate = self;
         _leftTableView.dataSource = self;
         _leftTableView.rowHeight = 55;
@@ -115,7 +115,7 @@
 {
     if (!_rightTableView)
     {
-        _rightTableView = [[UITableView alloc]initWithFrame:CGRectMake(80,0, SCREEN_WIDTH - 80, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
+        _rightTableView = [[UITableView alloc]initWithFrame:CGRectMake(80,0, SCREEN_WIDTH - 80, self.frame.size.height) style:UITableViewStylePlain];
         _rightTableView.delegate = self;
         _rightTableView.dataSource = self;
         _rightTableView.rowHeight = 80;
@@ -255,6 +255,7 @@
         _selectIndex = indexPath.row;
         [_rightTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:_selectIndex] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
+    NSLog(@"%ld,%ld",indexPath.section,indexPath.row);
 }
 
 
@@ -273,6 +274,14 @@
         _isScrollDown = lastOffsetY < scrollView.contentOffset.y;
         lastOffsetY = scrollView.contentOffset.y;
     }
+}
+
+
+-(void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    _leftTableView.frame = CGRectMake(0, 0, 80, self.frame.size.height);
+    _rightTableView.frame = CGRectMake(80,0, SCREEN_WIDTH - 80, self.frame.size.height);
 }
 
 /*
