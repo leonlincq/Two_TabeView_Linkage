@@ -15,9 +15,9 @@
 @property (nonatomic,strong) UIView   *spaceViewTwo;
 
 
-@property (nonatomic,strong) UILabel *ShopNameLabel;
+@property (nonatomic,strong) UILabel *shopNameLabel;
+@property (nonatomic,strong) UILabel *actionInfoTitleLabel;
 @property (nonatomic,strong) UILabel *actionInfoLabel;
-@property (nonatomic,strong) UILabel *MonthSellLabel;
 
 @end
 
@@ -29,13 +29,16 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        [self addSubview:self.backButton];
+        [self addSubview:self.shopNameLabel];
+        
         [self addSubview:self.spaceViewOne];
         
+        [self addSubview:self.actionInfoTitleLabel];
         [self addSubview:self.actionInfoLabel];
         
         [self addSubview:self.spaceViewTwo];
         
+        [self addSubview:self.backButton];
     }
     return self;
 }
@@ -77,9 +80,31 @@
     return _backButton;
 }
 
+-(UILabel *)shopNameLabel
+{
+    if (!_shopNameLabel)
+    {
+        _shopNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(20 , 40,  self.frame.size.width - 20 - 20, 110)];
+        _shopNameLabel.numberOfLines = 3;
+        _shopNameLabel.textColor = [UIColor blackColor];
+        _shopNameLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _shopNameLabel;
+}
 
+-(UILabel *)actionInfoTitleLabel
+{
+    if (!_actionInfoTitleLabel)
+    {
+        _actionInfoTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(20 , 150 + 20,  self.frame.size.width - 20 - 20, 50)];
+        _actionInfoTitleLabel.numberOfLines = 1;
+        _actionInfoTitleLabel.textColor = [UIColor blackColor];
+        _actionInfoTitleLabel.textAlignment = NSTextAlignmentCenter;
+        _actionInfoTitleLabel.text = @"活动详情";
+    }
+    return _actionInfoTitleLabel;
+}
 
-//@property (nonatomic,strong) UILabel *ShopNameLabel;
 
 -(UILabel *)actionInfoLabel
 {
@@ -94,16 +119,12 @@
 }
 
 
-
-
-//@property (nonatomic,strong) UILabel *MonthSellLabel;
-
-
 -(void)setShopData:(SectionThirdModel *)model
 {
     _shopData = model;
     
     _actionInfoLabel.text = [NSString stringWithFormat:@" 🔴 %@ \n\n 🔵 %@ \n\n 🔴 %@ \n\n 🔵%@ \n\n",_shopData.actionInfo1,_shopData.actionInfo2,_shopData.actionInfo3,_shopData.actionInfo4];
+    _shopNameLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n",_shopData.storeName,_shopData.comment,_shopData.sell];
 }
 
 

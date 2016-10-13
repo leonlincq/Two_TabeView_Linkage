@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "LinkageView.h"
+#import "SectionThirdModel.h"
 
 @interface ChainReactionView : UIView
 
-@property (nonatomic,strong) LinkageView *linkView;
-
 @property (nonatomic, strong) UICollectionView *collectionView; //频道内容数据
 @property (nonatomic, strong) NSArray *allNameArray;
+
+@property (nonatomic,strong) SectionThirdModel *shopAndGoodsModel;
+
+- (instancetype)initWithFrame:(CGRect)frame andSetModel:(SectionThirdModel *)shopAndGoodsModel;
 
 @end

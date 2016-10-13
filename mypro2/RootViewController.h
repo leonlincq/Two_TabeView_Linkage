@@ -10,7 +10,10 @@
 #import "ShopNaviView.h"
 #import "ShopToolbar.h"
 
+#import "LinkageView.h"
+
 #import "SectionThirdModel.h"
+
 
 @class ChainReactionView;
 
@@ -27,11 +30,12 @@
 
 
 //=================================
-//1.点击商店，商店信息ToolBar要显示
-//2.Right单元格自定义
-//3.添加购物车
-//4.处理购物车
-//5.商品页面
+//1.Right单元格自定义
+//2.添加购物车
+//3.处理购物车
+//4.商品页面
+//5.评价
+//6.商家
 //=================================
 
 

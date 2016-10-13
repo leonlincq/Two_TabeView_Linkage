@@ -15,6 +15,8 @@
 #import "ShopCarView.h"
 #import "ShopToolbar.h"
 
+
+
 @interface RootViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic,strong) UIScrollView *myScrollView;
@@ -23,7 +25,8 @@
 @property (nonatomic,strong) ShopDetailView *stopView;
 @property (nonatomic,strong) ChainReactionView *chainView;
 @property (nonatomic,strong) ShopCarView *buttomView;
-
+@property (nonatomic,strong) UIButton *shopCarImageView;
+@property (nonatomic,strong) UILabel *shopCarNumLabel;
 
 
 @property (nonatomic,strong) UIButton *shopDetaiButton;
@@ -33,18 +36,40 @@
 
 @implementation RootViewController
 
+-(void)goodsAddDealWith:(NSNotification *)noti
+{
+    static NSInteger count = 0;
+    NSLog(@"%@",noti.object);
+    NSLog(@"++");
+    count+= 9;
+    _shopCarNumLabel.text = [NSString stringWithFormat:@"%ld",count];
+    if (count >=100 && count<1000)
+    {
+        _shopCarNumLabel.font = [UIFont systemFontOfSize:13];
+    }
+    if (count >=10 && count<100)
+    {
+        _shopCarNumLabel.font = [UIFont systemFontOfSize:17];
+    }
+    if (count >=0 && count<10)
+    {
+        _shopCarNumLabel.font = [UIFont systemFontOfSize:23];
+    }
+}
+
+-(void)goodsSubDealWith:(NSNotification *)noti
+{
+    NSLog(@"%@",noti.object);
+    NSLog(@"--");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _shopName = @"KFC";
-    
-    
 
-    
-    
-    
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(goodsAddDealWith:) name:@"AddButtonClick" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(goodsSubDealWith:) name:@"SubButtonClick" object:nil];
     
     
     self.edgesForExtendedLayout = UIRectEdgeTop;
@@ -85,7 +110,7 @@
     [_myScrollView addSubview:_stopView];
     
     //添加中间和下面的的scrollView
-    _chainView = [[ChainReactionView alloc] initWithFrame:CGRectMake(0, SHOPDETAIL_HEIGHT + FALSE_NAVI_HEIGHT  + STATUS_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - FALSE_NAVI_HEIGHT - SHOPCAR_HEIGHT - STATUS_HEIGHT - SHOPDETAIL_HEIGHT)];
+    _chainView = [[ChainReactionView alloc] initWithFrame:CGRectMake(0, SHOPDETAIL_HEIGHT + FALSE_NAVI_HEIGHT  + STATUS_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - FALSE_NAVI_HEIGHT - SHOPCAR_HEIGHT - STATUS_HEIGHT - SHOPDETAIL_HEIGHT) andSetModel:self.shopAndGoodsModel];
     [_myScrollView addSubview:_chainView];
     
     //    添加最下面的商店信息
@@ -93,7 +118,7 @@
     _buttomView.alpha = 0.8;
     [self.view addSubview:_buttomView];
     
-    
+    [self.view addSubview:self.shopCarImageView];
     
     _shopDetaiButton = [[UIButton alloc]initWithFrame:CGRectMake(0,STATUS_HEIGHT + FALSE_NAVI_HEIGHT,SCREEN_WIDTH, SHOPDETAIL_HEIGHT)];
     [_shopDetaiButton addTarget:self action:@selector(shopDetailClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -108,27 +133,32 @@
 }
 
 #pragma mark - 懒加载
--(SectionThirdModel *)shopAndGoodsModel
+-(UIButton *)shopCarImageView
 {
-    if (!_shopAndGoodsModel)
+    if (!_shopCarImageView)
     {
-        _shopAndGoodsModel = [[SectionThirdModel alloc]init];
+        _shopCarImageView = [[UIButton alloc]initWithFrame:CGRectMake(10,SCREEN_HEIGHT-10-80, 80, 80)];
         
-        _shopAndGoodsModel.actionInfo1  = @"活动1。。。";
-        _shopAndGoodsModel.actionInfo2  = @"活动2。。。!!!~~~@@@###$$$";
-        _shopAndGoodsModel.actionInfo3  = @"活动3。。。!@#!$!@$!@#!#";
-        _shopAndGoodsModel.actionInfo4  = @"活动4。。。";
+        UIImageView *tempImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15,15, 50, 50)];
+        tempImageView.image = [UIImage imageNamed:@"shopCar"];
         
-        _shopAndGoodsModel.storeName    = @"麦当劳";
-        _shopAndGoodsModel.storeImage   = @"mdl";
-        _shopAndGoodsModel.sell         = @"月销售：30单";
-        _shopAndGoodsModel.comment      = @"评论:很好";
-        _shopAndGoodsModel.sellPrace    = @"15";
-        _shopAndGoodsModel.maxTime      = @"30";
-        _shopAndGoodsModel.distance     = @"距离:10KM";
+        _shopCarNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(80-26,0, 26, 26)];
+        _shopCarNumLabel.textAlignment = NSTextAlignmentCenter;
+        _shopCarNumLabel.backgroundColor = [UIColor redColor];
+        _shopCarNumLabel.textColor = [UIColor whiteColor];
+        _shopCarNumLabel.layer.masksToBounds = YES;
+        [_shopCarNumLabel.layer setCornerRadius:13.0];
+        
+        _shopCarImageView.backgroundColor = [UIColor blackColor];
+        [_shopCarImageView.layer setCornerRadius:40.0];
+        
+        [_shopCarImageView addSubview:tempImageView];
+        [_shopCarImageView addSubview:_shopCarNumLabel];
+        
     }
-    return _shopAndGoodsModel;
+    return _shopCarImageView;
 }
+
 
 
 #pragma mark -自定义代理
@@ -145,6 +175,7 @@
     ShopToolbar *tempToolView = [self.view viewWithTag:101];
     [tempToolView removeFromSuperview];
 }
+
 
 #pragma mark -代理
 
@@ -182,6 +213,30 @@
     shopDetaiToolbar.tag = 101;
     [self.view addSubview:shopDetaiToolbar];
 }
+
+//-(void)setShopAndGoodsModel:(SectionThirdModel *)shopAndGoodsModel
+//{
+//    _shopAndGoodsModel = shopAndGoodsModel;
+//
+//    NSMutableArray *tempArray = [[NSMutableArray alloc]init];
+//    NSMutableDictionary *tempDic = [[NSMutableDictionary alloc]init];
+//    
+//    [tempDic setObject:shopAndGoodsModel.actionInfo1 forKey:@"actionInfo1"];
+//    [tempDic setObject:shopAndGoodsModel.actionInfo2 forKey:@"actionInfo2"];
+//    [tempDic setObject:shopAndGoodsModel.actionInfo3 forKey:@"actionInfo3"];
+//    [tempDic setObject:shopAndGoodsModel.actionInfo4 forKey:@"actionInfo4"];
+//
+//    [tempDic setObject:shopAndGoodsModel.storeName forKey:@"storeName"];
+//    [tempDic setObject:shopAndGoodsModel.storeImage forKey:@"storeImage"];
+//    [tempDic setObject:shopAndGoodsModel.sell forKey:@"sell"];
+//    [tempDic setObject:shopAndGoodsModel.comment forKey:@"comment"];
+//    [tempDic setObject:shopAndGoodsModel.sellPrace forKey:@"sellPrace"];
+//    [tempDic setObject:shopAndGoodsModel.maxTime forKey:@"maxTime"];
+//    [tempDic setObject:shopAndGoodsModel.distance forKey:@"distance"];
+//    
+//    [tempArray addObject:tempDic];
+//    [tempArray writeToFile:[NSHomeDirectory() stringByAppendingPathComponent:@"homeToMe"] atomically:YES];
+//}
 
 
 

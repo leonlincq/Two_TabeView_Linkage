@@ -12,6 +12,14 @@
 //宏定义
 #import "PublicHeadClass.h"
 
+//模型管理
+#import "CategoryModel.h"
+
+#import "Foundation+Log.m"
+
+//@class CategoryModel;
+@class GoodsModel;
+
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

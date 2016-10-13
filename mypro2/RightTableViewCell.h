@@ -8,14 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class GoodsModel;
-
 #define RightTableView_CellIdentifier @"RightTableViewCell"
 
 @interface RightTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) GoodsModel *model;
+@property (nonatomic,strong) GoodsModel *goodModel;
 
-- (void)setGoodsNameLabelText:(NSString *)name;
+@property (nonatomic,strong) NSIndexPath *indexPath;
 
 @end

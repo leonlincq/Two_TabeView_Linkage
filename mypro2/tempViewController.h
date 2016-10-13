@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SectionThirdModel.h"
 
 @interface tempViewController : UIViewController
+
+@property (nonatomic,strong) SectionThirdModel *shopAndGoodsModel;
 
 @end

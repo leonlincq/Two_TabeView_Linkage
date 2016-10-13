@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) UIScrollView *channelView;        //频道View
 @property (nonatomic, strong) UIView *underLine;                //底部线条
+@property (nonatomic,strong) LinkageView *linkView;
+
 @property (nonatomic, strong) ChainReactionLabelButton *selectedLabel;  //选中的按钮
 @property (nonatomic, strong) NSMutableArray *labelArray;               //频道数组
 
@@ -25,20 +27,24 @@
 
 @implementation ChainReactionView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame andSetModel:(SectionThirdModel *)shopAndGoodsModel
 {
     self = [super initWithFrame:frame];
     if (self)
     {
+        self.shopAndGoodsModel = shopAndGoodsModel;
         self.backgroundColor = [UIColor orangeColor];
         
         //注册item
         [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:HomeItemReuseIdentifier];
         
+        self.linkView = [[LinkageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,self.collectionView.frame.size.height) andSetModel:shopAndGoodsModel];
+        
         //添加控件
         [self addSubview:self.channelView];         //添加频道View
         [self addSubview:self.collectionView];      //添加频道的内容View
         [self addSubview:self.underLine];           //添加频道的红色下划线
+
         
         //设置约束
         [self.channelView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -172,17 +178,12 @@
     UICollectionViewCell *item = [collectionView dequeueReusableCellWithReuseIdentifier:HomeItemReuseIdentifier forIndexPath:indexPath];
     
     collectionView.backgroundColor = [UIColor whiteColor];
-    
 
     switch (indexPath.row)
     {
         case 0:
-        {
             //添加下面的两个TableView联动
-            _linkView = [[LinkageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,collectionView.frame.size.height)];
-
-            [collectionView addSubview:_linkView];
-        }
+            [collectionView addSubview:self.linkView];
             break;
             
         case 1:
@@ -328,6 +329,11 @@
     _collectionView.frame = CGRectMake(0, 44, SCREEN_WIDTH,frame.size.height-44);
     _linkView.frame = CGRectMake(0, 0, SCREEN_WIDTH,_collectionView.frame.size.height);
 }
+
+//-(void)setShopAndGoodsModel:(SectionThirdModel *)shopAndGoodsModel
+//{
+//    _shopAndGoodsModel = shopAndGoodsModel;
+//}
 
 /*
 // Only override drawRect: if you perform custom drawing.

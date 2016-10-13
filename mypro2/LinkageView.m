@@ -23,20 +23,31 @@
 @property (nonatomic, strong) UITableView *leftTableView;
 @property (nonatomic, strong) UITableView *rightTableView;
 
-@property (nonatomic, strong) NSArray *fontName;
-@property (nonatomic, strong) NSMutableArray *allFont;
+@property (nonatomic, strong) NSMutableArray *currenShopAllGood;
+@property (nonatomic, strong) CategoryModel *goodmodel;
+
+@property (nonatomic, strong) NSArray *goodCategory;
+
+@property (nonatomic, strong) NSMutableArray *Category_taocan;
+@property (nonatomic, strong) NSMutableArray *Category_dangpin;
+@property (nonatomic, strong) NSMutableArray *Category_yinpin;
+@property (nonatomic, strong) NSMutableArray *Category_rexiao;
 
 @end
 
 
 @implementation LinkageView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame  andSetModel:(SectionThirdModel *)shopAndGoodsModel
 {
     self = [super initWithFrame:frame];
     if (self)
     {
+        _shopAndGoodsModel = shopAndGoodsModel;
+        
         self.backgroundColor = [UIColor whiteColor];
+        
+        [self searchCurrenShopDetail];
         
         _selectIndex = 0;
         _isScrollDown = YES;
@@ -52,47 +63,67 @@
 
 
 #pragma mark - 懒加载
-
-- (NSArray *)fontName
+- (NSMutableArray *)currenShopAllGood
 {
-    if (!_fontName)
+    if (!_currenShopAllGood)
     {
-        _fontName = [UIFont familyNames];
+        _currenShopAllGood = [[NSMutableArray alloc]init];
     }
-    return _fontName;
+    return _currenShopAllGood;
 }
 
-- (NSMutableArray *)allFont
+- (CategoryModel *)goodmodel
 {
-    if (!_allFont)
+    if (!_goodmodel)
     {
-        _allFont = [[NSMutableArray alloc]init];
-        
-        for (NSUInteger i = 0; i < self.fontName.count; i++)
-        {
-            NSArray *tempArray = [UIFont fontNamesForFamilyName:self.fontName[i]];
-            [_allFont addObject:tempArray];
-        }
+        _goodmodel = [[CategoryModel alloc]init];
     }
-    return _allFont;
+    return _goodmodel;
 }
 
-- (NSMutableArray *)categoryData
+- (NSArray *)goodCategory
 {
-    if (!_categoryData)
+    if (!_goodCategory)
     {
-        _categoryData = [NSMutableArray array];
+        _goodCategory = [[NSArray alloc]init];
     }
-    return _categoryData;
+    return _goodCategory;
 }
 
-- (NSMutableArray *)foodData
+- (NSMutableArray *)Category_taocan
 {
-    if (!_foodData)
+    if (!_Category_taocan)
     {
-        _foodData = [NSMutableArray array];
+        _Category_taocan = [[NSMutableArray alloc]init];
     }
-    return _foodData;
+    return _Category_taocan;
+}
+
+- (NSMutableArray *)Category_dangpin
+{
+    if (!_Category_dangpin)
+    {
+        _Category_dangpin = [[NSMutableArray alloc]init];
+    }
+    return _Category_dangpin;
+}
+
+- (NSMutableArray *)Category_yinpin
+{
+    if (!_Category_yinpin)
+    {
+        _Category_yinpin = [[NSMutableArray alloc]init];
+    }
+    return _Category_yinpin;
+}
+
+- (NSMutableArray *)Category_rexiao
+{
+    if (!_Category_rexiao)
+    {
+        _Category_rexiao = [[NSMutableArray alloc]init];
+    }
+    return _Category_rexiao;
 }
 
 - (UITableView *)leftTableView
@@ -137,8 +168,7 @@
     }
     else
     {
-        //        return self.categoryData.count;
-        return self.fontName.count;
+        return _goodCategory.count;
     }
 }
 
@@ -149,15 +179,30 @@
 {
     if (_leftTableView == tableView)
     {
-        //        return self.categoryData.count;
-        return self.fontName.count;
+        return _goodCategory.count;   //4种类别
     }
     else
     {
-        //        return [self.foodData[section] count];
-        return [UIFont fontNamesForFamilyName:self.fontName[section]].count;
+        NSString *tempString = _goodCategory[section];
+        
+        if ([tempString isEqualToString:@"套餐"])
+        {
+            return _Category_taocan.count;
+        }
+        if ([tempString isEqualToString:@"单品"])
+        {
+            return _Category_dangpin.count;
+        }
+        if ([tempString isEqualToString:@"饮品"])
+        {
+            return _Category_yinpin.count;
+        }
+        if ([tempString isEqualToString:@"热销"])
+        {
+            return _Category_rexiao.count;
+        }
+        return 1;   //防报警
     }
-    
 }
 
 //===================================================
@@ -169,23 +214,51 @@
     {
         LeftTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:LeftTableView_CellIdentifier forIndexPath:indexPath];
         
-        //        FoodModel *model = self.categoryData[indexPath.row];
-        //        cell.name.text = model.name;
-        
-        cell.cellLabel.text = self.fontName[indexPath.row];
+        cell.cellLabel.text = _goodCategory[indexPath.row];
         return cell;
     }
     else
     {
         RightTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:RightTableView_CellIdentifier forIndexPath:indexPath];
-        //        FoodModel *model = self.foodData[indexPath.section][indexPath.row];
-        //        cell.model = model;
+        cell.indexPath = indexPath;
         
-        [cell setGoodsNameLabelText:[[UIFont fontNamesForFamilyName:self.fontName[indexPath.section]] objectAtIndex:indexPath.row]];
+        if ([self.goodCategory[indexPath.section]isEqualToString:@"套餐"])
+        {
+            cell.goodModel = [self GoodModelWithaArray:self.Category_taocan IndexPath:indexPath];
+        }
+        
+        if ([self.goodCategory[indexPath.section] isEqualToString:@"单品"])
+        {
+            cell.goodModel = [self GoodModelWithaArray:self.Category_dangpin IndexPath:indexPath];
+        }
+        
+        if ([self.goodCategory[indexPath.section] isEqualToString:@"饮品"])
+        {
+            cell.goodModel = [self GoodModelWithaArray:self.Category_yinpin IndexPath:indexPath];
+        }
+
+        if ([self.goodCategory[indexPath.section] isEqualToString:@"热销"])
+        {
+            cell.goodModel = [self GoodModelWithaArray:self.Category_rexiao IndexPath:indexPath];
+        }
         
         return cell;
     }
 }
+
+- (GoodsModel *)GoodModelWithaArray:(NSMutableArray *)array IndexPath:(NSIndexPath *)indexPath
+{
+    GoodsModel *tempGoodsModel = [[GoodsModel alloc]init];
+
+    tempGoodsModel.goodsModelGoodsImage = [array[indexPath.row] objectForKey:@"GoodsImage"];
+    tempGoodsModel.goodsModelGoodsName = [array[indexPath.row] objectForKey:@"GoodsName"];
+    tempGoodsModel.goodsModelGoodsPrice = [array[indexPath.row] objectForKey:@"GoodsPrice"];
+    tempGoodsModel.goodsModelPreferentPrice = [array[indexPath.row] objectForKey:@"PreferentPrice"];
+    
+    return tempGoodsModel;
+}
+
+
 
 //===================================================
 //   组头高度
@@ -207,9 +280,8 @@
     if (_rightTableView == tableView)
     {
         TableViewHeaderView *view = [[TableViewHeaderView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
-        //        FoodModel *model = self.categoryData[section];
-        //        view.name.text = model.name;
-        view.headerLabel.text = self.fontName[section];
+
+        view.headerLabel.text = self.goodCategory[section];
         return view;
     }
     return nil;
@@ -246,12 +318,6 @@
 {
     if (_leftTableView == tableView)
     {
-#if 1
-        if ([UIFont fontNamesForFamilyName:self.fontName[indexPath.row]].count == 0)
-        {
-            return;
-        }
-#endif
         _selectIndex = indexPath.row;
         [_rightTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:_selectIndex] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
@@ -276,13 +342,63 @@
     }
 }
 
-
+#pragma mark - 重写frame
 -(void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
     _leftTableView.frame = CGRectMake(0, 0, 80, self.frame.size.height);
     _rightTableView.frame = CGRectMake(80,0, SCREEN_WIDTH - 80, self.frame.size.height);
 }
+
+- (void)searchCurrenShopDetail
+{
+    NSString *GoodsDetailPath = [[NSBundle mainBundle]pathForResource:@"GoodsDetail" ofType:@"plist"];
+    
+    NSArray *allArray = [NSArray arrayWithContentsOfFile:GoodsDetailPath];
+    
+    
+    for (NSUInteger i = 0; i < 10; i ++)
+    {
+        NSArray *shop = allArray[i];
+        NSDictionary *shopDetail = shop[0];
+        NSString *storeImage = shopDetail[@"storeImage"];
+        
+        if([storeImage isEqualToString:self.shopAndGoodsModel.storeImage])
+        {
+            self.currenShopAllGood = [NSMutableArray arrayWithArray:shop];
+            
+            NSMutableSet *tempSet = [[NSMutableSet alloc]init];
+            for (NSUInteger j = 1; j < 11; j++)
+            {
+                NSString *tempString = [shop[j] objectForKey:@"Category"];
+    
+                [tempSet addObject:tempString];
+
+                if([tempString isEqualToString:@"套餐"])
+                {
+                    [self.Category_taocan addObject:shop[j]];
+                }
+                if([tempString isEqualToString:@"单品"])
+                {
+                    [self.Category_dangpin addObject:shop[j]];
+                }
+                if([tempString isEqualToString:@"饮品"])
+                {
+                    [self.Category_yinpin addObject:shop[j]];
+                }
+                if([tempString isEqualToString:@"热销"])
+                {
+                    [self.Category_rexiao addObject:shop[j]];
+                }
+                
+            }
+            _goodCategory  = [tempSet allObjects];
+            
+            return;
+        }
+    }
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

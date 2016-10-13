@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIImageView   *goodsImageView;
 @property (nonatomic, strong) UILabel       *goodsNameLabel;
 @property (nonatomic, strong) UILabel       *goodsPriceLabel;
+@property (nonatomic, strong) UILabel       *goodsPreferentPriceLabel;
 
 @property (nonatomic, strong) UIButton      *goodsAddButton;
 @property (nonatomic, strong) UIButton      *goodsSubButton;
@@ -29,10 +30,11 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
-
         [self.contentView addSubview:self.goodsImageView];
         [self.contentView addSubview:self.goodsNameLabel];
         [self.contentView addSubview:self.goodsPriceLabel];
+        [self.contentView addSubview:self.goodsPreferentPriceLabel];
+        
         
         [self.contentView addSubview:self.goodsAddButton];
         [self.contentView addSubview:self.goodsSubButton];
@@ -57,7 +59,7 @@
     if (!_goodsNameLabel)
     {
         _goodsNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 10, 200, 30)];      //以后改宏定义
-        _goodsNameLabel.font = [UIFont systemFontOfSize:14];                                //以后改宏定义
+        _goodsNameLabel.font = [UIFont systemFontOfSize:25];                                //以后改宏定义
     }
     return _goodsNameLabel;
 }
@@ -67,17 +69,30 @@
     if (!_goodsPriceLabel)
     {
         _goodsPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 45, 200, 30)];     //以后改宏定义
-        _goodsPriceLabel.font = [UIFont systemFontOfSize:14];                               //以后改宏定义
+        _goodsPriceLabel.font = [UIFont systemFontOfSize:20];                               //以后改宏定义
         _goodsPriceLabel.textColor = [UIColor redColor];                                    //以后改宏定义
     }
     return _goodsPriceLabel;
 }
 
+- (UILabel *)goodsPreferentPriceLabel
+{
+    if (!_goodsPreferentPriceLabel)
+    {
+        _goodsPreferentPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 45, 200, 30)];     //以后改宏定义
+        _goodsPreferentPriceLabel.font = [UIFont systemFontOfSize:20];                               //以后改宏定义
+        _goodsPreferentPriceLabel.textColor = [UIColor redColor];                                    //以后改宏定义
+    }
+    return _goodsPreferentPriceLabel;
+}
+
+
+
 - (UIButton *)goodsAddButton
 {
     if (!_goodsAddButton)
     {
-        _goodsAddButton = [[UIButton alloc]initWithFrame:CGRectMake(/*self.frame.size.width-5-25,self.frame.size.height-5-25,*/334-10-25,80-10-25, 25,25)];
+        _goodsAddButton = [[UIButton alloc]init];
         [_goodsAddButton setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
         _goodsAddButton.backgroundColor = [UIColor redColor];
         [_goodsAddButton.layer setCornerRadius:5];
@@ -90,7 +105,7 @@
 {
     if (!_goodsSubButton)
     {
-        _goodsSubButton = [[UIButton alloc]initWithFrame:CGRectMake(/*self.frame.size.width-5-25,self.frame.size.height-5-25,*/334-10-25-25-25,80-10-25, 25,25)];
+        _goodsSubButton = [[UIButton alloc]init];
         [_goodsSubButton setImage:[UIImage imageNamed:@"sub"] forState:UIControlStateNormal];
         [_goodsSubButton.layer setCornerRadius:5];
         [_goodsSubButton.layer setBorderWidth:2.0];
@@ -101,30 +116,36 @@
 }
 
 #pragma mark 模式 To View
-- (void)setModel:(GoodsModel *)model
+- (void)setGoodModel:(GoodsModel *)goodModel
 {
-    self.goodsImageView.image   = [UIImage imageNamed:model.goodsImage];
-    self.goodsNameLabel.text    = model.goodsName;
-    self.goodsPriceLabel.text   = [NSString stringWithFormat:@"￥%02lf",model.goodsPrice];
-}
-
-- (void)setGoodsNameLabelText:(NSString *)name
-{
-    self.goodsNameLabel.text = name;
+    _goodModel = goodModel;
+    
+    self.goodsImageView.image   = [UIImage imageNamed:goodModel.goodsModelGoodsImage];
+    self.goodsNameLabel.text    = goodModel.goodsModelGoodsName;
+    self.goodsPriceLabel.text   = goodModel.goodsModelGoodsPrice;
+    self.goodsPreferentPriceLabel.text = goodModel.goodsModelPreferentPrice;
 }
 
 -(void)goodsCountClick:(UIButton *)button
 {
+
     if (button == _goodsAddButton)
     {
-        NSLog(@"++");
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"AddButtonClick" object:_indexPath userInfo:nil];
     }
     else
     {
-        NSLog(@"--");
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"SubButtonClick" object:_indexPath userInfo:nil];
     }
 }
 
+
+-(void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    _goodsAddButton.frame = CGRectMake(frame.size.width-5-25,frame.size.height-5-25, 25,25);
+    _goodsSubButton.frame = CGRectMake(frame.size.width-5-25-25-25,frame.size.height-5-25, 25,25);
+}
 
 
 - (void)awakeFromNib {
