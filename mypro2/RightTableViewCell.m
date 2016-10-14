@@ -68,8 +68,8 @@
 {
     if (!_goodsPriceLabel)
     {
-        _goodsPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 45, 200, 30)];     //以后改宏定义
-        _goodsPriceLabel.font = [UIFont systemFontOfSize:20];                               //以后改宏定义
+        _goodsPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 45, 200, 18)];     //以后改宏定义
+        _goodsPriceLabel.font = [UIFont systemFontOfSize:18];                               //以后改宏定义
         _goodsPriceLabel.textColor = [UIColor redColor];                                    //以后改宏定义
     }
     return _goodsPriceLabel;
@@ -79,8 +79,8 @@
 {
     if (!_goodsPreferentPriceLabel)
     {
-        _goodsPreferentPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 45, 200, 30)];     //以后改宏定义
-        _goodsPreferentPriceLabel.font = [UIFont systemFontOfSize:20];                               //以后改宏定义
+        _goodsPreferentPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 45, 200, 18)];     //以后改宏定义
+        _goodsPreferentPriceLabel.font = [UIFont systemFontOfSize:18];                               //以后改宏定义
         _goodsPreferentPriceLabel.textColor = [UIColor redColor];                                    //以后改宏定义
     }
     return _goodsPreferentPriceLabel;
@@ -96,7 +96,10 @@
         [_goodsAddButton setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
         _goodsAddButton.backgroundColor = [UIColor redColor];
         [_goodsAddButton.layer setCornerRadius:5];
-        [_goodsAddButton addTarget:self action:@selector(goodsCountClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [_goodsAddButton addTarget:self action:@selector(goodsCountClick:) forControlEvents:UIControlEventTouchUpInside];
+        UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addButtonClick:)];
+        [_goodsAddButton addGestureRecognizer:oneTap];
+        
     }
     return _goodsAddButton;
 }
@@ -122,8 +125,15 @@
     
     self.goodsImageView.image   = [UIImage imageNamed:goodModel.goodsModelGoodsImage];
     self.goodsNameLabel.text    = goodModel.goodsModelGoodsName;
-    self.goodsPriceLabel.text   = goodModel.goodsModelGoodsPrice;
-    self.goodsPreferentPriceLabel.text = goodModel.goodsModelPreferentPrice;
+    
+    NSString *priceString = [NSString stringWithFormat:@"￥%@",goodModel.goodsModelGoodsPrice];
+    NSMutableAttributedString *attSriceString = [[NSMutableAttributedString alloc]initWithString:priceString];
+    
+    [attSriceString addAttribute:NSStrikethroughStyleAttributeName value:@2 range:NSMakeRange(0, priceString.length)];
+    
+    self.goodsPriceLabel.attributedText = attSriceString;
+    
+    self.goodsPreferentPriceLabel.text = [NSString stringWithFormat:@"￥%@",goodModel.goodsModelPreferentPrice];
 }
 
 -(void)goodsCountClick:(UIButton *)button
@@ -139,6 +149,15 @@
     }
 }
 
+-(void)addButtonClick:(UITapGestureRecognizer *)tap
+{
+    CGPoint tempPoint = [tap locationInView:self.superview.superview.superview];
+    
+    NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:_indexPath,@"indexPath",[NSString stringWithFormat:@"%lf",tempPoint.x],@"clickPointX",[NSString stringWithFormat:@"%lf",tempPoint.y],@"clickPointY",nil];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"AddButtonClick" object:nil userInfo:dict];
+    
+}
 
 -(void)setFrame:(CGRect)frame
 {

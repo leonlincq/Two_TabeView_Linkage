@@ -38,7 +38,7 @@
         _shopAndGoodsModel.comment      = @"评论:很好";
         _shopAndGoodsModel.sellPrace    = @"15";
         _shopAndGoodsModel.maxTime      = @"30";
-        _shopAndGoodsModel.distance     = @"距离:10KM";
+        _shopAndGoodsModel.distance     = @"10KM";
     }
     return _shopAndGoodsModel;
 }

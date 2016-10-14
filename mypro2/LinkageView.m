@@ -332,13 +332,16 @@
 //===================================================
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    static CGFloat lastOffsetY = 0;
-    
-    UITableView *tableView = (UITableView *) scrollView;
-    if (_rightTableView == tableView)
+    if ([scrollView isMemberOfClass:[UITableView class]])
     {
-        _isScrollDown = lastOffsetY < scrollView.contentOffset.y;
-        lastOffsetY = scrollView.contentOffset.y;
+
+        static CGFloat lastOffsetY = 0;
+        UITableView *tableView = (UITableView *) scrollView;
+        if (_rightTableView == tableView)
+        {
+            _isScrollDown = lastOffsetY < scrollView.contentOffset.y;
+            lastOffsetY = scrollView.contentOffset.y;
+        }
     }
 }
 

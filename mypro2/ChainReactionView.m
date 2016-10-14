@@ -52,7 +52,7 @@
             make.top.equalTo(self);
             make.height.mas_equalTo(44);
         }];
-        
+
         [self.underLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(3);
             make.leading.bottom.equalTo(self.channelView);
@@ -143,6 +143,7 @@
         _collectionView.delegate = self;
         _collectionView.pagingEnabled = YES;
         _collectionView.showsHorizontalScrollIndicator = NO;
+        _collectionView.backgroundColor = [UIColor whiteColor];
     }
     return _collectionView;
 }
@@ -176,8 +177,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *item = [collectionView dequeueReusableCellWithReuseIdentifier:HomeItemReuseIdentifier forIndexPath:indexPath];
-    
-    collectionView.backgroundColor = [UIColor whiteColor];
 
     switch (indexPath.row)
     {
@@ -185,13 +184,54 @@
             //添加下面的两个TableView联动
             [collectionView addSubview:self.linkView];
             break;
-            
+
         case 1:
+        {
+            CGRect tempFrame = collectionView.frame;
+            tempFrame.origin.y = 0;
+            UIView *tempView = [[UIView alloc]initWithFrame:tempFrame];
+            tempView.backgroundColor = [UIColor whiteColor];
             
+//            UILabel *tempLabel = [[UILabel alloc]initWithFrame:CGRectMake(50, tempView.frame.size.height/2-50, SCREEN_WIDTH-100, 100)];
+//            tempLabel.text = @"404 No Found";
+//            tempLabel.textColor = [UIColor redColor];
+//            tempLabel.textAlignment = NSTextAlignmentCenter;
+//            tempLabel.font = [UIFont systemFontOfSize:45];
+//            [tempView addSubview:tempLabel];
+
+            UIActivityIndicatorView *tempActivityView = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(tempView.frame.size.width/2-50, tempView.frame.size.height/2-50, 100, 100)];
+            tempActivityView.backgroundColor = [UIColor grayColor];
+            tempActivityView.hidesWhenStopped = NO;
+            tempActivityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+            [tempActivityView.layer setCornerRadius:25];
+            [tempActivityView startAnimating];
+            [tempView addSubview:tempActivityView];
+            
+            
+            
+            [item.contentView addSubview:tempView];
+        }
             break;
             
         case 2:
+        {
+            CGRect tempFrame = collectionView.frame;
+            tempFrame.origin.y = 0;
+            UIView *tempView = [[UIView alloc]initWithFrame:tempFrame];
+            tempView.backgroundColor = [UIColor whiteColor];
             
+            
+            UILabel *tempLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, collectionView.frame.size.width-10, 250)];
+            tempLabel.text = [NSString stringWithFormat:@" 🏚店名:%@\n 📒地址:\n 📏距离:%@\n \n 1️⃣%@\n 2️⃣%@\n 3️⃣%@\n 4️⃣%@\n",self.shopAndGoodsModel.storeName,self.shopAndGoodsModel.distance,self.shopAndGoodsModel.actionInfo1,self.shopAndGoodsModel.actionInfo2,self.shopAndGoodsModel.actionInfo3,self.shopAndGoodsModel.actionInfo4];
+            tempLabel.alpha = 0.7;
+            tempLabel.textColor = [UIColor blackColor];
+            tempLabel.numberOfLines = 0;
+            tempLabel.textAlignment = NSTextAlignmentLeft;
+//            tempLabel.font = [UIFont systemFontOfSize:20];
+            [tempView addSubview:tempLabel];
+            [item.contentView addSubview:tempView];
+
+        }
             break;
             
         default:

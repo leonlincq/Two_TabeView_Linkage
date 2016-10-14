@@ -39,7 +39,7 @@
 -(void)goodsAddDealWith:(NSNotification *)noti
 {
     static NSInteger count = 0;
-    NSLog(@"%@",noti.object);
+    NSLog(@"%@",[noti.userInfo objectForKey:@"indexPath"]);
     NSLog(@"++");
     count+= 9;
     _shopCarNumLabel.text = [NSString stringWithFormat:@"%ld",count];
@@ -55,6 +55,93 @@
     {
         _shopCarNumLabel.font = [UIFont systemFontOfSize:23];
     }
+    
+    [noti.userInfo objectForKey:@"indexPath"];
+    CGPoint tempPoint ;
+    tempPoint.x = [[noti.userInfo objectForKey:@"clickPointX"]floatValue];
+    tempPoint.y = [[noti.userInfo objectForKey:@"clickPointY"]floatValue] + STATUS_HEIGHT +FALSE_NAVI_HEIGHT + SHOPDETAIL_HEIGHT+44;
+
+
+    UIView *tempView = [[UIView alloc]initWithFrame:CGRectMake(tempPoint.x, tempPoint.y, 24, 24)];
+    
+    tempView.backgroundColor = [UIColor redColor];
+    [tempView.layer setCornerRadius:12];
+    tempView.tag = 111;
+    [self.view addSubview:tempView];
+    
+    [UIView animateWithDuration:0.6 animations:^{
+        
+        CGRect tempCGRect = tempView.frame;
+        tempCGRect.origin.x -= 100;
+        tempCGRect.origin.y -= 100;
+        tempView.frame = tempCGRect;
+        [self performSelector:@selector(secAnimate:) withObject:tempView afterDelay:0.6];
+    }];
+}
+
+-(void)secAnimate:(UIView *)tempView
+{
+    [UIView animateWithDuration:0.6 animations:^{
+        
+        CGRect tempCGRect = tempView.frame;
+        tempCGRect.origin.x = 10+40-12;
+        tempCGRect.origin.y = SCREEN_HEIGHT-10-80 +40 -12;
+        tempView.frame = tempCGRect;
+        [self performSelector:@selector(killAnimateView:) withObject:tempView afterDelay:0.6];
+    }];
+}
+
+
+-(void)killAnimateView:(UIView *)tempView
+{
+    [tempView removeFromSuperview];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+    CGRect tempRect = self.shopCarImageView.frame;
+        
+    tempRect.origin.x -= 15;
+    tempRect.origin.y -= 15;
+    tempRect.size.width +=30;
+    tempRect.size.height +=30;
+    [self.shopCarImageView.layer setCornerRadius:tempRect.size.height/2];
+    self.shopCarImageView.frame = tempRect;
+    
+    UIImageView *tempImaView = [self.shopCarImageView viewWithTag:5];
+    tempRect = tempImaView.frame;
+    
+    tempRect.size.width +=30;
+    tempRect.size.height +=30;
+    tempImaView.frame = tempRect;
+        
+        
+    [self performSelector:@selector(shopCarbackNomalSize) withObject:nil afterDelay:0.3];
+    }];
+}
+
+-(void)shopCarbackNomalSize
+{
+  
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        CGRect tempRect = self.shopCarImageView.frame;
+        
+        tempRect.origin.x += 15;
+        tempRect.origin.y += 15;
+        tempRect.size.width -=30;
+        tempRect.size.height -=30;
+        [self.shopCarImageView.layer setCornerRadius:tempRect.size.height/2];
+        self.shopCarImageView.frame = tempRect;
+ 
+        UIImageView *tempImaView = [self.shopCarImageView viewWithTag:5];
+        tempRect = tempImaView.frame;
+        
+        tempRect.size.width -=30;
+        tempRect.size.height -=30;
+        tempImaView.frame = tempRect;
+        
+        
+    }];
 }
 
 -(void)goodsSubDealWith:(NSNotification *)noti
@@ -70,7 +157,6 @@
 
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(goodsAddDealWith:) name:@"AddButtonClick" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(goodsSubDealWith:) name:@"SubButtonClick" object:nil];
-    
     
     self.edgesForExtendedLayout = UIRectEdgeTop;
     
@@ -137,9 +223,11 @@
 {
     if (!_shopCarImageView)
     {
-        _shopCarImageView = [[UIButton alloc]initWithFrame:CGRectMake(10,SCREEN_HEIGHT-10-80, 80, 80)];
+        _shopCarImageView = [[UIButton alloc]initWithFrame:CGRectMake(15,SCREEN_HEIGHT-15-70, 70, 70)];
         
-        UIImageView *tempImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15,15, 50, 50)];
+        
+        UIImageView *tempImageView = [[UIImageView alloc]initWithFrame:CGRectMake(12,12, 50, 50)];
+        tempImageView.tag = 5;
         tempImageView.image = [UIImage imageNamed:@"shopCar"];
         
         _shopCarNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(80-26,0, 26, 26)];
@@ -150,7 +238,7 @@
         [_shopCarNumLabel.layer setCornerRadius:13.0];
         
         _shopCarImageView.backgroundColor = [UIColor blackColor];
-        [_shopCarImageView.layer setCornerRadius:40.0];
+        [_shopCarImageView.layer setCornerRadius:35.0];
         
         [_shopCarImageView addSubview:tempImageView];
         [_shopCarImageView addSubview:_shopCarNumLabel];
@@ -185,9 +273,7 @@
     if ([scrollView isMemberOfClass:[UIScrollView class]])
     {
         _chainView.frame = CGRectMake(0, SHOPDETAIL_HEIGHT + FALSE_NAVI_HEIGHT  + STATUS_HEIGHT,SCREEN_WIDTH, MENU_HEIGHT + _myScrollView.contentOffset.y);
-        
     }
-
 }
 
 
