@@ -59,14 +59,14 @@
     {
         _shopAndGoodsModel = [[SectionThirdModel alloc]init];
         
-        _shopAndGoodsModel.actionInfo1  = @"活动1。。。";
-        _shopAndGoodsModel.actionInfo2  = @"活动2。。。!!!~~~@@@###$$$";
-        _shopAndGoodsModel.actionInfo3  = @"活动3。。。!@#!$!@$!@#!#";
-        _shopAndGoodsModel.actionInfo4  = @"活动4。。。";
+//        _shopAndGoodsModel.actionInfo1  = @"活动1。。。";
+//        _shopAndGoodsModel.actionInfo2  = @"活动2。。。!!!~~~@@@###$$$";
+//        _shopAndGoodsModel.actionInfo3  = @"活动3。。。!@#!$!@$!@#!#";
+//        _shopAndGoodsModel.actionInfo4  = @"活动4。。。";
         
-//        _shopAndGoodsModel.storeName    = @"转转乐(湖里万达店)";
+        _shopAndGoodsModel.storeName    = @"转转乐(湖里万达店)";
 //        _shopAndGoodsModel.storeName    = @"意享披萨(钟宅店)";
-        _shopAndGoodsModel.storeName    = @"QQ脆皮鸡排";
+//        _shopAndGoodsModel.storeName    = @"QQ脆皮鸡排";
 //        _shopAndGoodsModel.storeName    = @"骨之味";
 //        _shopAndGoodsModel.storeName    = @"甜丫丫";
 //        _shopAndGoodsModel.storeName    = @"正宗骨汤麻辣烫";
@@ -75,12 +75,12 @@
 //        _shopAndGoodsModel.storeName    = @"老塞行动咖啡";
 //        _shopAndGoodsModel.storeName    = @"85°C";
         
-        _shopAndGoodsModel.storeImage   = @"store_name03";
-        _shopAndGoodsModel.sell         = @"月销售：30单";
-        _shopAndGoodsModel.comment      = @"评论:很好";
-        _shopAndGoodsModel.sellPrace    = @"15";
-        _shopAndGoodsModel.maxTime      = @"30";
-        _shopAndGoodsModel.distance     = @"10KM";
+//        _shopAndGoodsModel.storeImage   = @"store_name03";
+//        _shopAndGoodsModel.sell         = @"月销售：30单";
+//        _shopAndGoodsModel.comment      = @"评论:很好";
+//        _shopAndGoodsModel.sellPrace    = @"15";
+//        _shopAndGoodsModel.maxTime      = @"30";
+//        _shopAndGoodsModel.distance     = @"10KM";
         
         
 

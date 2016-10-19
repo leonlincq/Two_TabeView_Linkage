@@ -83,6 +83,16 @@
     else
     {
         self.sureButton.hidden = YES;
+        
+        if ([[_shopCarPrice substringWithRange:NSMakeRange(2, _shopCarPrice.length-2)] intValue] != 0)
+        {
+            self.sureLabel.text = [NSString stringWithFormat:@"还差%d元",[_sentPrice intValue] - [[_shopCarPrice substringWithRange:NSMakeRange(2, _shopCarPrice.length-2)] intValue] ];
+        }
+        else
+        {
+            self.sureLabel.text = [NSString stringWithFormat:@"%@元起送",_sentPrice];
+        }
+
     }
 }
 

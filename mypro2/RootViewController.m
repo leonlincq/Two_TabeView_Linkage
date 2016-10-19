@@ -481,6 +481,7 @@
 {
     MakeOrderViewController *orderPage = [[MakeOrderViewController alloc]init];
     orderPage.allChooseGoods = self.allGoodsArray;
+    orderPage.storeName = self.shopAndGoodsModel.storeName;
     [self presentViewController:orderPage animated:YES completion:^{
 
     }];

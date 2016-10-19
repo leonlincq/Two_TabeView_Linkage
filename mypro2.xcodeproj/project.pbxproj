@@ -107,6 +107,7 @@
 		25EAF6411DAE1F0100C3A6A9 /* sub.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF6401DAE1F0100C3A6A9 /* sub.png */; };
 		25EAF6441DAE20CD00C3A6A9 /* SectionThirdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EAF6421DAE20CD00C3A6A9 /* SectionThirdModel.m */; };
 		25EAF6461DAE237A00C3A6A9 /* mdl.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF6451DAE237A00C3A6A9 /* mdl.png */; };
+		25F12B731DB711E00061B1B9 /* VWWWaterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F12B721DB711E00061B1B9 /* VWWWaterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -324,6 +325,8 @@
 		25EAF6421DAE20CD00C3A6A9 /* SectionThirdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionThirdModel.m; sourceTree = "<group>"; };
 		25EAF6431DAE20CD00C3A6A9 /* SectionThirdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionThirdModel.h; sourceTree = "<group>"; };
 		25EAF6451DAE237A00C3A6A9 /* mdl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mdl.png; sourceTree = "<group>"; };
+		25F12B711DB711E00061B1B9 /* VWWWaterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWWaterView.h; sourceTree = "<group>"; };
+		25F12B721DB711E00061B1B9 /* VWWWaterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWWaterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +405,7 @@
 		25231C611DAB81C5009DD12A /* 第三方库 */ = {
 			isa = PBXGroup;
 			children = (
+				25F12B6E1DB711D10061B1B9 /* 波浪 */,
 				25DF824D1DB4C3EC00CBFABE /* fmdb */,
 				25231C621DAB81DF009DD12A /* Pods */,
 			);
@@ -790,6 +794,15 @@
 			name = ShopDetailButton;
 			sourceTree = "<group>";
 		};
+		25F12B6E1DB711D10061B1B9 /* 波浪 */ = {
+			isa = PBXGroup;
+			children = (
+				25F12B711DB711E00061B1B9 /* VWWWaterView.h */,
+				25F12B721DB711E00061B1B9 /* VWWWaterView.m */,
+			);
+			name = "波浪";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1033,6 +1046,7 @@
 				25DE2A4B1DACD49600ABFCFA /* tempViewController.m in Sources */,
 				25688F301DAA20CB002AA448 /* main.m in Sources */,
 				25688F731DAA2DD9002AA448 /* TableViewHeaderView.m in Sources */,
+				25F12B731DB711E00061B1B9 /* VWWWaterView.m in Sources */,
 				25DF825D1DB4C3EC00CBFABE /* FMDatabaseQueue.m in Sources */,
 				25DF825C1DB4C3EC00CBFABE /* FMDatabasePool.m in Sources */,
 				25231CBC1DAB81E0009DD12A /* MASViewConstraint.m in Sources */,

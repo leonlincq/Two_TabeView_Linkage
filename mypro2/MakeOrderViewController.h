@@ -12,4 +12,6 @@
 
 @property (nonatomic,strong) NSArray  *allChooseGoods;
 
+@property (nonatomic,strong) NSString *storeName;
+
 @end

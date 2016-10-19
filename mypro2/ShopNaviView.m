@@ -79,7 +79,6 @@
 #ifdef OBSERVE
     self.isReturn = YES;
 #endif
-    NSLog(@"点击");
    [self.backdelegate dismissToHome];
 }
 
