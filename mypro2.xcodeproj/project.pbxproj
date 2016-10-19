@@ -108,6 +108,7 @@
 		25EAF6441DAE20CD00C3A6A9 /* SectionThirdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EAF6421DAE20CD00C3A6A9 /* SectionThirdModel.m */; };
 		25EAF6461DAE237A00C3A6A9 /* mdl.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF6451DAE237A00C3A6A9 /* mdl.png */; };
 		25F12B731DB711E00061B1B9 /* VWWWaterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F12B721DB711E00061B1B9 /* VWWWaterView.m */; };
+		25F12B7D1DB743F30061B1B9 /* CircleRevolve.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F12B7C1DB743F30061B1B9 /* CircleRevolve.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,6 +328,8 @@
 		25EAF6451DAE237A00C3A6A9 /* mdl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mdl.png; sourceTree = "<group>"; };
 		25F12B711DB711E00061B1B9 /* VWWWaterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWWaterView.h; sourceTree = "<group>"; };
 		25F12B721DB711E00061B1B9 /* VWWWaterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWWaterView.m; sourceTree = "<group>"; };
+		25F12B7B1DB743F30061B1B9 /* CircleRevolve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleRevolve.h; sourceTree = "<group>"; };
+		25F12B7C1DB743F30061B1B9 /* CircleRevolve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleRevolve.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +408,7 @@
 		25231C611DAB81C5009DD12A /* 第三方库 */ = {
 			isa = PBXGroup;
 			children = (
+				25F12B771DB743100061B1B9 /* 旋转圆圈 */,
 				25F12B6E1DB711D10061B1B9 /* 波浪 */,
 				25DF824D1DB4C3EC00CBFABE /* fmdb */,
 				25231C621DAB81DF009DD12A /* Pods */,
@@ -803,6 +807,15 @@
 			name = "波浪";
 			sourceTree = "<group>";
 		};
+		25F12B771DB743100061B1B9 /* 旋转圆圈 */ = {
+			isa = PBXGroup;
+			children = (
+				25F12B7B1DB743F30061B1B9 /* CircleRevolve.h */,
+				25F12B7C1DB743F30061B1B9 /* CircleRevolve.m */,
+			);
+			name = "旋转圆圈";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1017,6 +1030,7 @@
 				250D12EF1DAF8C7700105DDB /* Foundation+Log.m in Sources */,
 				25DF825B1DB4C3EC00CBFABE /* FMDatabaseAdditions.m in Sources */,
 				25231CC41DAB81E0009DD12A /* Pods-LianDong-acknowledgements.markdown in Sources */,
+				25F12B7D1DB743F30061B1B9 /* CircleRevolve.m in Sources */,
 				25688F361DAA20CB002AA448 /* ViewController.m in Sources */,
 				25688F691DAA2644002AA448 /* LeftTableViewCell.m in Sources */,
 				25B233861DB622CE00F81785 /* MakeOrderViewController.m in Sources */,

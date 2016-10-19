@@ -21,6 +21,7 @@
 @property (nonatomic,copy) NSString *goodPrice;     //商品价格
 @property (nonatomic,copy) NSString *goodNum;       //商品数量
 @property (nonatomic,copy) NSString *goodAllMoney;  //商品总金额
+@property (nonatomic,copy) NSString *address;       //收货地址
 
 
 @end

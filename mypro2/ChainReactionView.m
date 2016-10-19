@@ -47,11 +47,11 @@
 
         
         //设置约束
-        [self.channelView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.trailing.equalTo(self);
-            make.top.equalTo(self);
-            make.height.mas_equalTo(44);
-        }];
+//        [self.channelView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.leading.trailing.equalTo(self);
+//            make.top.equalTo(self);
+//            make.height.mas_equalTo(44);
+//        }];
 
 //        [self.underLine mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.height.mas_equalTo(3);
@@ -89,7 +89,7 @@
 {
     if (!_channelView)
     {
-        _channelView = [[UIScrollView alloc] init];
+        _channelView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, 44)];
         
         //创建按钮
         CGFloat buttonWidth = SCREEN_WIDTH/3;
@@ -182,6 +182,8 @@
     {
         case 0:
             //添加下面的两个TableView联动
+//            [item.contentView addSubview:self.linkView];
+//            NSLog(@"%lf,%lf,%lf,%lf",self.frame.origin.y,self.channelView.frame.origin.y,collectionView.frame.origin.y,self.linkView.frame.origin.y);
             [collectionView addSubview:self.linkView];
             break;
 
@@ -362,12 +364,14 @@
     
 }
 
-
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    _collectionView.frame = CGRectMake(0, 44, SCREEN_WIDTH,frame.size.height-44);
-    _linkView.frame = CGRectMake(0, 0, SCREEN_WIDTH,_collectionView.frame.size.height);
+
+    self.collectionView.frame = CGRectMake(0, 44, SCREEN_WIDTH,frame.size.height-44);
+    self.linkView.frame = CGRectMake(0, 0, SCREEN_WIDTH,self.collectionView.frame.size.height);
+    
+    [self.collectionView reloadData];
 }
 
 #pragma mark -搜数据

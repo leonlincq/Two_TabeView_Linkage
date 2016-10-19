@@ -99,7 +99,6 @@
 //        [_goodsAddButton addTarget:self action:@selector(goodsCountClick:) forControlEvents:UIControlEventTouchUpInside];
         UITapGestureRecognizer *oneTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addButtonClick:)];
         [_goodsAddButton addGestureRecognizer:oneTap];
-        
     }
     return _goodsAddButton;
 }

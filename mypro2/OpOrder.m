@@ -36,7 +36,7 @@
     }
 //    if ([fileop executeUpdate:@"CREATE TABLE IF NOT EXISTS ShopCar (buyer TEXT , shopName TEXT ,goodName TEXT ,goodPrice TEXT,goodNum TEXT,goodAllMoney TEXT)"] == NO)
     
-    if ([fileop executeUpdate:@"CREATE TABLE IF NOT EXISTS Orders (orderNum TEXT , orderState TEXT ,orderEva TEXT ,orderEvaStart TEXT ,buyer TEXT ,shopName TEXT ,goodName TEXT ,goodPrice TEXT ,goodNum TEXT ,goodAllMoney TEXT )"] == NO)
+    if ([fileop executeUpdate:@"CREATE TABLE IF NOT EXISTS Orders (orderNum TEXT , orderState TEXT ,orderEva TEXT ,orderEvaStart TEXT ,buyer TEXT ,shopName TEXT ,goodName TEXT ,goodPrice TEXT ,goodNum TEXT ,goodAllMoney TEXT ,address TEXT)"] == NO)
     {
         [fileop close];
         tempsta = FileState_BuildError;
@@ -63,7 +63,7 @@
         return tempsta;
     }
     
-    if ([fileop executeUpdate:@"INSERT INTO Orders(orderNum,orderState,orderEva,orderEvaStart,buyer,shopName,goodName,goodPrice,goodNum,goodAllMoney) VALUES (?,?,?,?,?,?,?,?,?,?)",orderdata.orderNum,orderdata.orderState,orderdata.orderEva,orderdata.orderEvaStart,orderdata.buyer,orderdata.shopName,orderdata.goodName,orderdata.goodPrice,orderdata.goodNum,orderdata.goodAllMoney] == NO )
+    if ([fileop executeUpdate:@"INSERT INTO Orders(orderNum,orderState,orderEva,orderEvaStart,buyer,shopName,goodName,goodPrice,goodNum,goodAllMoney,address) VALUES (?,?,?,?,?,?,?,?,?,?,?)",orderdata.orderNum,orderdata.orderState,orderdata.orderEva,orderdata.orderEvaStart,orderdata.buyer,orderdata.shopName,orderdata.goodName,orderdata.goodPrice,orderdata.goodNum,orderdata.goodAllMoney,orderdata.address] == NO )
     {
         [fileop close];
         tempsta = FileState_AddError;
@@ -100,7 +100,7 @@
             
 //            if (orderdata.order == nil && orderdata.buyer != nil )  //订单全选，买家指定
 //            {
-                fileresult = [fileop executeQuery:@"SELECT orderNum,orderState,orderEva,orderEvaStart,buyer,shopName,goodName,goodPrice,goodNum,goodAllMoney From Orders where buyer = ? ",orderdata.buyer];
+                fileresult = [fileop executeQuery:@"SELECT orderNum,orderState,orderEva,orderEvaStart,buyer,shopName,goodName,goodPrice,goodNum,goodAllMoney,address From Orders where buyer = ? ",orderdata.buyer];
 //            }
             
             break;
@@ -124,6 +124,7 @@
         temp_date.goodPrice     = [fileresult stringForColumn:@"goodPrice"];
         temp_date.goodNum       = [fileresult stringForColumn:@"goodNum"];
         temp_date.goodAllMoney  = [fileresult stringForColumn:@"goodAllMoney"];
+        temp_date.address       = [fileresult stringForColumn:@"address"];
         
         [dataarray addObject:temp_date];
     };

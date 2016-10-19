@@ -90,7 +90,7 @@
     _chainView = [[ChainReactionView alloc] initWithFrame:CGRectMake(0, SHOPDETAIL_HEIGHT + FALSE_NAVI_HEIGHT  + STATUS_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - FALSE_NAVI_HEIGHT - SHOPCAR_HEIGHT - STATUS_HEIGHT - SHOPDETAIL_HEIGHT) andSetModel:self.shopAndGoodsModel];
     [_myScrollView addSubview:_chainView];
     
-    //    添加最下面的商店信息
+    //添加最下面的商店信息
     _buttomView = [[ShopCarView alloc]initWithFrame:CGRectMake(0,SCREEN_HEIGHT-60, SCREEN_WIDTH,60)];
     _buttomView.alpha = 0.8;
     _buttomView.toOrderDelegate = self;
@@ -120,7 +120,7 @@
         [_shopCarImageView setBackgroundImage:[UIImage imageNamed:@"shopCarPic"] forState:UIControlStateNormal];
  
         
-        _shopCarNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(80-26,0, 26, 26)];
+        _shopCarNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(70-26,0, 26, 26)];
         _shopCarNumLabel.textAlignment = NSTextAlignmentCenter;
         _shopCarNumLabel.backgroundColor = [UIColor redColor];
         _shopCarNumLabel.textColor = [UIColor whiteColor];
@@ -449,8 +449,21 @@
         [tempDic setObject:[tempDataDic objectForKey:@"PreferentPrice"] forKey:@"price"];
         [tempDic setObject:@"1" forKey:@"numb"];
         [tempDic setObject:[tempDataDic objectForKey:@"PreferentPrice"] forKey:@"money"];
-
+        
+        //截取配送价格的后两位
+        NSString *subSomeCharToString = [self.shopAndGoodsModel.sellPrace substringWithRange:NSMakeRange(self.shopAndGoodsModel.sellPrace.length-2-[self.shopAndGoodsModel.sellPrace hasSuffix:@" "], 2)];
+        //如果截取到后两位的第一为为“￥”，也就是配送费为个位，再截取
+        if ([subSomeCharToString hasPrefix:@"¥"])
+        {
+            [tempDic setObject:[subSomeCharToString substringWithRange:NSMakeRange(1, 1)] forKey:@"sentMoney"];
+        }
+        else//配送费为2位数，直接setObject
+        {
+            [tempDic setObject:subSomeCharToString forKey:@"sentMoney"];
+        }
+        
         [self.allGoodsArray addObject:tempDic];
+        
         [[NSNotificationCenter defaultCenter]postNotificationName:@"ButtonAndArray" object:self.allGoodsArray];
     }
 }
@@ -482,8 +495,8 @@
     MakeOrderViewController *orderPage = [[MakeOrderViewController alloc]init];
     orderPage.allChooseGoods = self.allGoodsArray;
     orderPage.storeName = self.shopAndGoodsModel.storeName;
-    [self presentViewController:orderPage animated:YES completion:^{
 
+    [self presentViewController:orderPage animated:YES completion:^{
     }];
 }
 
