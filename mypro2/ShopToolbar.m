@@ -124,7 +124,7 @@
     _shopData = model;
     
     _actionInfoLabel.text = [NSString stringWithFormat:@" 🔴 %@ \n\n 🔵 %@ \n\n 🔴 %@ \n\n 🔵%@ \n\n",_shopData.actionInfo1,_shopData.actionInfo2,_shopData.actionInfo3,_shopData.actionInfo4];
-    _shopNameLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n",_shopData.storeName,_shopData.comment,_shopData.sell];
+    _shopNameLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@",_shopData.storeName,_shopData.comment,_shopData.sell];
 }
 
 

@@ -13,7 +13,10 @@
 @interface RightTableViewCell : UITableViewCell
 
 @property (nonatomic,strong) GoodsModel *goodModel;
-
 @property (nonatomic,strong) NSIndexPath *indexPath;
 
+@property (nonatomic, strong) UIButton *goodsAddButton;
+@property (nonatomic, strong) UIButton *goodsSubButton;
+
+@property (nonatomic,strong) NSString *goodsNumb;
 @end

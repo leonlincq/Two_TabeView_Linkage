@@ -29,8 +29,52 @@
                 [tempArray addObject:tempDic];
                 continue;
             }
-            
-            [tempDic setValue:[NSString stringWithFormat:@"商品%ld",j-1] forKey:@"GoodsName"];
+            switch (i)
+            {
+                case 1:
+                    [tempDic setValue:[NSString stringWithFormat:@"转转乐|商品%ld",j-1] forKey:@"GoodsName"];
+                    break;
+                    
+                case 2:
+                    [tempDic setValue:[NSString stringWithFormat:@"意享披萨|商品%ld",j-1] forKey:@"GoodsName"];
+                    break;
+                    
+                case 3:
+                    [tempDic setValue:[NSString stringWithFormat:@"QQ脆皮鸡排|商品%ld",j-1] forKey:@"GoodsName"];
+                    break;
+                    
+                case 4:
+                    [tempDic setValue:[NSString stringWithFormat:@"骨之味|商品%ld",j-1] forKey:@"GoodsName"];
+                    break;
+                    
+                case 5:
+                    [tempDic setValue:[NSString stringWithFormat:@"甜丫丫|商品%ld",j-1] forKey:@"GoodsName"];
+                    break;
+                    
+                case 6:
+                    [tempDic setValue:[NSString stringWithFormat:@"正宗骨汤麻辣烫|商品%ld",j-1] forKey:@"GoodsName"];
+                    break;
+                    
+                case 7:
+                    [tempDic setValue:[NSString stringWithFormat:@"食尚煲仔饭|商品%ld",j-1] forKey:@"GoodsName"];
+                    break;
+                    
+                case 8:
+                    [tempDic setValue:[NSString stringWithFormat:@"鲜芋仙|商品%ld",j-1] forKey:@"GoodsName"];
+                    break;
+                    
+                case 9:
+                    [tempDic setValue:[NSString stringWithFormat:@"老塞行动咖啡|商品%ld",j-1] forKey:@"GoodsName"];
+                    break;
+                    
+                case 10:
+                    [tempDic setValue:[NSString stringWithFormat:@"85°C|商品%ld",j-1] forKey:@"GoodsName"];
+                    break;
+                    
+                default:
+                    break;
+            }
+
             [tempDic setValue:[NSString stringWithFormat:@"GoodsImage%ld",(i-1)*10+(j-1)] forKey:@"GoodsImage"];
             
             NSUInteger temp1 = arc4random()%20;

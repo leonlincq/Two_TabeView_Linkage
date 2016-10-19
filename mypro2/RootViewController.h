@@ -9,15 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "ShopNaviView.h"
 #import "ShopToolbar.h"
+#import "ShopCarView.h"
 
 #import "LinkageView.h"
 
 #import "SectionThirdModel.h"
 
-
 @class ChainReactionView;
 
-@interface RootViewController : UIViewController<myNaviBackDelegate,backToShopAndGoodsProtocol>
+@interface RootViewController : UIViewController<myNaviBackDelegate,backToShopAndGoodsProtocol,suretToOrderProtocol>
 
 @property (nonatomic,copy) NSString *shopName;;
 
@@ -25,7 +25,11 @@
 
 @end
 
-
+typedef enum
+{
+    Algo_Add = 0x00,
+    Algo_Sub = 0x01
+}Algo;
 
 
 
@@ -33,7 +37,6 @@
 //1.添加购物车               
 //2.处理购物车
 //3.商品页面
-//4.红色下划线有Bug       有状态再改
 //=================================
 
 

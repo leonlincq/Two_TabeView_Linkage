@@ -128,7 +128,7 @@
 
     _storeImageView.image = [UIImage imageNamed:_shopData.storeImage];
     
-    _sentPriceTimeLabel.text = [NSString stringWithFormat:@"起送 ￥%@ | 配送 ￥5 | 送达 %@分钟",_shopData.sellPrace,_shopData.maxTime];
+    _sentPriceTimeLabel.text = [NSString stringWithFormat:@"%@ | 送达 %@",_shopData.sellPrace,_shopData.maxTime];
     _actionInfo1Label.text = [NSString stringWithFormat:@"🔴%@",_shopData.actionInfo1];
     _actionInfo2Label.text = [NSString stringWithFormat:@"🔵%@",_shopData.actionInfo2];
     _actionInfo3Label.text = [NSString stringWithFormat:@"🔴%@",_shopData.actionInfo3];

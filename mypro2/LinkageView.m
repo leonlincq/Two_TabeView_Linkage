@@ -33,6 +33,8 @@
 @property (nonatomic, strong) NSMutableArray *Category_yinpin;
 @property (nonatomic, strong) NSMutableArray *Category_rexiao;
 
+@property (nonatomic,strong) NSArray *buttonStates;
+
 @end
 
 
@@ -56,6 +58,9 @@
         [self addSubview:self.rightTableView];
         
         [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+        
+        
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeCell:) name:@"ButtonAndArray" object:nil];
     }
     return self;
 }
@@ -125,6 +130,16 @@
     }
     return _Category_rexiao;
 }
+
+- (NSArray *)buttonStates
+{
+    if (!_buttonStates)
+    {
+        _buttonStates = [[NSArray alloc]init];
+    }
+    return _buttonStates;
+}
+
 
 - (UITableView *)leftTableView
 {
@@ -242,6 +257,26 @@
             cell.goodModel = [self GoodModelWithaArray:self.Category_rexiao IndexPath:indexPath];
         }
         
+        
+        if (self.buttonStates.count == 0)
+        {
+            cell.goodsSubButton.hidden = YES;
+            cell.goodsNumb = @"0";
+        }
+        else
+        {
+            cell.goodsSubButton.hidden = YES;
+            cell.goodsNumb = @"0";
+
+            for (NSUInteger i=0; i< self.buttonStates.count ; i++)
+            {
+                if ([[self.buttonStates[i] objectForKey:@"indexPath"] isEqual:indexPath])
+                {
+                    cell.goodsSubButton.hidden = NO;
+                    cell.goodsNumb = [self.buttonStates[i] objectForKey:@"numb"];
+                }
+            }
+        }
         return cell;
     }
 }
@@ -321,7 +356,7 @@
         _selectIndex = indexPath.row;
         [_rightTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:_selectIndex] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
-    NSLog(@"%ld,%ld",indexPath.section,indexPath.row);
+//    NSLog(@"%ld,%ld",indexPath.section,indexPath.row);
 }
 
 
@@ -397,11 +432,52 @@
             }
             _goodCategory  = [tempSet allObjects];
             
+            [self writeToPlist];
+            
             return;
         }
     }
 }
 
+-(void)writeToPlist
+{
+    NSMutableArray *allArray = [[NSMutableArray alloc]init];
+    
+    for (NSUInteger i = 0 ; i < _goodCategory.count ; i++)
+    {
+        
+        NSMutableDictionary *tempDic = [[NSMutableDictionary alloc]init];
+        if ([_goodCategory[i] isEqualToString:@"套餐"])
+        {
+            [tempDic setObject:self.Category_taocan forKey:@"套餐"];
+        }
+        if ([_goodCategory[i] isEqualToString:@"单品"])
+        {
+            [tempDic setObject:self.Category_dangpin forKey:@"单品"];
+        }
+        if ([_goodCategory[i] isEqualToString:@"饮品"])
+        {
+            [tempDic setObject:self.Category_yinpin forKey:@"饮品"];
+        }
+        if ([_goodCategory[i] isEqualToString:@"热销"])
+        {
+            [tempDic setObject:self.Category_rexiao forKey:@"热销"];
+        }
+        
+        [allArray addObject:tempDic];
+    }
+    [allArray writeToFile:[NSHomeDirectory() stringByAppendingPathComponent:@"shopCategory.plist"] atomically:YES];
+    NSLog(@"%@",NSHomeDirectory());
+}
+
+#pragma mark - 接受通知
+-(void)changeCell:(NSNotification *)noti
+{
+    self.buttonStates = noti.object;
+//    NSLog(@"%@",noti.object);
+    
+    [self.rightTableView reloadData];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

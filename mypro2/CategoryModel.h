@@ -28,4 +28,17 @@
 //@property (nonatomic, copy) NSString    *goodsModel;//月销量
 
 
+
+
+typedef NS_ENUM(NSUInteger,FileState)
+{
+    FileState_OK             = 0x00,
+    FileState_OpenError      = 0x01,
+    FileState_BuildError     = 0x02,
+    FileState_AddError       = 0x03,
+    FileState_DeleError      = 0x04,
+    FileState_UpDataError    = 0x05
+
+};
+
 @end

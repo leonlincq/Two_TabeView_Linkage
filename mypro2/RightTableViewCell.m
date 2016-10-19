@@ -16,9 +16,7 @@
 @property (nonatomic, strong) UILabel       *goodsPriceLabel;
 @property (nonatomic, strong) UILabel       *goodsPreferentPriceLabel;
 
-@property (nonatomic, strong) UIButton      *goodsAddButton;
-@property (nonatomic, strong) UIButton      *goodsSubButton;
-
+@property (nonatomic, strong) UILabel       *goodsNumbLabel;
 @end
 
 
@@ -38,6 +36,8 @@
         
         [self.contentView addSubview:self.goodsAddButton];
         [self.contentView addSubview:self.goodsSubButton];
+        
+        [self.contentView addSubview:self.goodsNumbLabel];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -59,7 +59,7 @@
     if (!_goodsNameLabel)
     {
         _goodsNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 10, 200, 30)];      //以后改宏定义
-        _goodsNameLabel.font = [UIFont systemFontOfSize:25];                                //以后改宏定义
+        _goodsNameLabel.font = [UIFont systemFontOfSize:18];                                //以后改宏定义
     }
     return _goodsNameLabel;
 }
@@ -69,7 +69,7 @@
     if (!_goodsPriceLabel)
     {
         _goodsPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 45, 200, 18)];     //以后改宏定义
-        _goodsPriceLabel.font = [UIFont systemFontOfSize:18];                               //以后改宏定义
+        _goodsPriceLabel.font = [UIFont systemFontOfSize:16];                               //以后改宏定义
         _goodsPriceLabel.textColor = [UIColor redColor];                                    //以后改宏定义
     }
     return _goodsPriceLabel;
@@ -80,7 +80,7 @@
     if (!_goodsPreferentPriceLabel)
     {
         _goodsPreferentPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 45, 200, 18)];     //以后改宏定义
-        _goodsPreferentPriceLabel.font = [UIFont systemFontOfSize:18];                               //以后改宏定义
+        _goodsPreferentPriceLabel.font = [UIFont systemFontOfSize:16];                               //以后改宏定义
         _goodsPreferentPriceLabel.textColor = [UIColor redColor];                                    //以后改宏定义
     }
     return _goodsPreferentPriceLabel;
@@ -118,6 +118,19 @@
     return _goodsSubButton;
 }
 
+-(UILabel *)goodsNumbLabel
+{
+    if (!_goodsNumbLabel)
+    {
+        _goodsNumbLabel = [[UILabel alloc]init];
+        _goodsNumbLabel.textColor = [UIColor blackColor];
+        _goodsNumbLabel.font = [UIFont systemFontOfSize:16];
+        _goodsNumbLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _goodsNumbLabel;
+}
+
+
 #pragma mark 模式 To View
 - (void)setGoodModel:(GoodsModel *)goodModel
 {
@@ -139,24 +152,38 @@
 -(void)goodsCountClick:(UIButton *)button
 {
 
-    if (button == _goodsAddButton)
-    {
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"AddButtonClick" object:_indexPath userInfo:nil];
-    }
-    else
-    {
+//    if (button == _goodsAddButton)
+//    {
+//        [[NSNotificationCenter defaultCenter]postNotificationName:@"AddButtonClick" object:_indexPath userInfo:nil];
+//    }
+//    else
+//    {
         [[NSNotificationCenter defaultCenter]postNotificationName:@"SubButtonClick" object:_indexPath userInfo:nil];
-    }
+//    }
 }
+
+#if 0   //根据点击位置
+    #define RootView tap.view.superview.superview.superview.superview.superview.superview.superview.superview.superview
+#endif
 
 -(void)addButtonClick:(UITapGestureRecognizer *)tap
 {
-    CGPoint tempPoint = [tap locationInView:self.superview.superview.superview];
+#if 0   //根据点击位置
+    CGPoint tempPoint = [tap locationInView:RootView];
     
-    NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:_indexPath,@"indexPath",[NSString stringWithFormat:@"%lf",tempPoint.x],@"clickPointX",[NSString stringWithFormat:@"%lf",tempPoint.y],@"clickPointY",nil];
+    NSLog(@"%lf,%lf",tempPoint.x,tempPoint.y);
+//    NSLog(@"%@",RootView);
+#endif
+
+    
+    //根据Button位置
+    UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
+    CGRect rect=[_goodsAddButton convertRect:_goodsAddButton.bounds toView:window];
+    
+    
+    NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:_indexPath,@"indexPath",[NSString stringWithFormat:@"%lf",rect.origin.x],@"clickPointX",[NSString stringWithFormat:@"%lf",rect.origin.y],@"clickPointY",nil];
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"AddButtonClick" object:nil userInfo:dict];
-    
 }
 
 -(void)setFrame:(CGRect)frame
@@ -164,7 +191,23 @@
     [super setFrame:frame];
     _goodsAddButton.frame = CGRectMake(frame.size.width-5-25,frame.size.height-5-25, 25,25);
     _goodsSubButton.frame = CGRectMake(frame.size.width-5-25-25-25,frame.size.height-5-25, 25,25);
+    _goodsNumbLabel.frame = CGRectMake(frame.size.width-5-25-25, frame.size.height-5-25, 25, 25);
 }
+
+-(void)setGoodsNumb:(NSString *)numb
+{
+    _goodsNumb = [NSString stringWithString:numb];
+//    NSLog(@"%@",numb);
+    if ([numb isEqualToString:@"0"])
+    {
+        _goodsNumbLabel.text = @" ";
+    }
+    else
+    {
+        _goodsNumbLabel.text = numb;
+    }
+}
+
 
 
 - (void)awakeFromNib {

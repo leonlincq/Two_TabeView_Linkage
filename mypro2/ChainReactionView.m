@@ -53,11 +53,11 @@
             make.height.mas_equalTo(44);
         }];
 
-        [self.underLine mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(3);
-            make.leading.bottom.equalTo(self.channelView);
-            make.width.mas_equalTo(SCREEN_WIDTH/3);
-        }];
+//        [self.underLine mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.height.mas_equalTo(3);
+//            make.leading.bottom.equalTo(self.channelView);
+//            make.width.mas_equalTo(SCREEN_WIDTH/3);
+//        }];
         
 //        [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.top.equalTo(self.channelView.mas_bottom);
@@ -155,7 +155,7 @@
 {
     if (!_underLine)
     {
-        _underLine = [[UIView alloc] init];
+        _underLine = [[UIView alloc]initWithFrame:CGRectMake(0, 44-3, SCREEN_WIDTH/3, 3)];
         _underLine.backgroundColor = [UIColor redColor];
     }
     return _underLine;
@@ -222,7 +222,7 @@
             
             
             UILabel *tempLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, collectionView.frame.size.width-10, 250)];
-            tempLabel.text = [NSString stringWithFormat:@" 🏚店名:%@\n 📒地址:\n 📏距离:%@\n \n 1️⃣%@\n 2️⃣%@\n 3️⃣%@\n 4️⃣%@\n",self.shopAndGoodsModel.storeName,self.shopAndGoodsModel.distance,self.shopAndGoodsModel.actionInfo1,self.shopAndGoodsModel.actionInfo2,self.shopAndGoodsModel.actionInfo3,self.shopAndGoodsModel.actionInfo4];
+            tempLabel.text = [NSString stringWithFormat:@" 🏚店名:%@\n 📒地址:%@\n 📏距离:%@\n \n 1️⃣%@\n 2️⃣%@\n 3️⃣%@\n 4️⃣%@\n",self.shopAndGoodsModel.storeName,[self baseOnShopNameSearchAdd],self.shopAndGoodsModel.distance,self.shopAndGoodsModel.actionInfo1,self.shopAndGoodsModel.actionInfo2,self.shopAndGoodsModel.actionInfo3,self.shopAndGoodsModel.actionInfo4];
             tempLabel.alpha = 0.7;
             tempLabel.textColor = [UIColor blackColor];
             tempLabel.numberOfLines = 0;
@@ -369,6 +369,25 @@
     _collectionView.frame = CGRectMake(0, 44, SCREEN_WIDTH,frame.size.height-44);
     _linkView.frame = CGRectMake(0, 0, SCREEN_WIDTH,_collectionView.frame.size.height);
 }
+
+#pragma mark -搜数据
+-(NSString *)baseOnShopNameSearchAdd
+{
+    NSString *tempPath = [[NSBundle mainBundle]pathForResource:@"GoodsDetail" ofType:@"plist"];
+    
+    NSArray *tempAllShop = [NSArray arrayWithContentsOfFile:tempPath];
+    
+    for (NSUInteger i = 0; i < 10 ; i++)
+    {
+        
+        if ([[[tempAllShop[i] objectAtIndex:0]objectForKey:@"storeImage"]isEqualToString:_shopAndGoodsModel.storeImage])
+        {
+            return [[tempAllShop[i] objectAtIndex:0]objectForKey:@"ShopAddress"];
+        }
+    }
+    return nil;
+}
+
 
 //-(void)setShopAndGoodsModel:(SectionThirdModel *)shopAndGoodsModel
 //{

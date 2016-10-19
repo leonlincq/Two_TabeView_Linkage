@@ -28,6 +28,9 @@
 //    
 //}
 
-
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"%@,%@,%@,%@。%@,%@,%@,%@,%@,%@,%@。",_actionInfo1,_actionInfo2,_actionInfo3,_actionInfo4,_storeName,_storeImage,_sell,_comment,_sellPrace,_maxTime,_distance];
+}
 
 @end

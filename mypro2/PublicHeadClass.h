@@ -31,7 +31,7 @@
 
 
 
-#define OBSERVE
+//#define OBSERVE
 
 #define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 #define DEFAULT_COLOR RGBA(253, 212, 49, 1)
@@ -40,6 +40,8 @@
 #define SHOPCAR_HEIGHT      60
 #define FALSE_NAVI_HEIGHT   44  //self.navigationController.navigationBar.frame.size.height   //导航栏高度44
 #define STATUS_HEIGHT   [[UIApplication sharedApplication]statusBarFrame].size.height  //最顶上状态栏高度20
+
+#define SqliteDataPath [NSHomeDirectory() stringByAppendingPathComponent:@"MyData.sqlite"]
 
 
 #endif /* PublicHeadClass_h */
