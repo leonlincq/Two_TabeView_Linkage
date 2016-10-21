@@ -38,8 +38,11 @@
 
 #define SHOPDETAIL_HEIGHT   150
 #define SHOPCAR_HEIGHT      60
-#define FALSE_NAVI_HEIGHT   44  //self.navigationController.navigationBar.frame.size.height   //导航栏高度44
+#define NAVI_HEIGHT   self.navigationController.navigationBar.frame.size.height
+#define FALSE_NAVI_HEIGHT   44  //   //导航栏高度44
 #define STATUS_HEIGHT   [[UIApplication sharedApplication]statusBarFrame].size.height  //最顶上状态栏高度20
+#define TABBAR_HEIGHT   self.tabBarController.tabBar.frame.size.height
+
 
 #define SqliteDataPath [NSHomeDirectory() stringByAppendingPathComponent:@"MyData.sqlite"]
 

@@ -8,7 +8,6 @@
 
 #import "ChainReactionView.h"
 #import "ChainReactionLabelButton.h"
-#import "Masonry.h"
 
 #define HomeItemReuseIdentifier @"HomeItemReuseIdentifier"
 
@@ -16,7 +15,7 @@
 
 @property (nonatomic, strong) UIScrollView *channelView;        //频道View
 @property (nonatomic, strong) UIView *underLine;                //底部线条
-@property (nonatomic,strong) LinkageView *linkView;
+
 
 @property (nonatomic, strong) ChainReactionLabelButton *selectedLabel;  //选中的按钮
 @property (nonatomic, strong) NSMutableArray *labelArray;               //频道数组

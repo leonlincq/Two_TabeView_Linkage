@@ -17,6 +17,9 @@
 
 @property (nonatomic,strong) SectionThirdModel *shopAndGoodsModel;
 
+@property (nonatomic,strong) LinkageView *linkView;
+
+
 - (instancetype)initWithFrame:(CGRect)frame andSetModel:(SectionThirdModel *)shopAndGoodsModel;
 
 @end

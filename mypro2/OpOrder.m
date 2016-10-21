@@ -105,6 +105,13 @@
             
             break;
             
+        case OrderSelect_orderNum:
+            
+            fileresult = [fileop executeQuery:@"SELECT orderNum,orderState,orderEva,orderEvaStart,buyer,shopName,goodName,goodPrice,goodNum,goodAllMoney,address From Orders where orderNum = ? ",orderdata.orderNum];
+            
+            break;
+            
+            
         default:
             break;
     }

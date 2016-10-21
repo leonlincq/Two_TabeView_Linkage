@@ -12,6 +12,7 @@
 #import "CategoryModel.h"
 #import "TableViewHeaderView.h"
 
+
 @interface LinkageView () <UITableViewDelegate, UITableViewDataSource>
 {
     NSInteger _selectIndex;
@@ -356,7 +357,30 @@
         _selectIndex = indexPath.row;
         [_rightTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:_selectIndex] atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }
-//    NSLog(@"%ld,%ld",indexPath.section,indexPath.row);
+    else if (_rightTableView == tableView)
+    {
+        NSString *tempString = _goodCategory[indexPath.section];
+        NSDictionary *tempDic = [[NSDictionary alloc]init];
+        
+        if ([tempString isEqualToString:@"套餐"])
+        {
+            tempDic = _Category_taocan[indexPath.row];
+        }
+        if ([tempString isEqualToString:@"单品"])
+        {
+            tempDic = _Category_dangpin[indexPath.row];
+        }
+        if ([tempString isEqualToString:@"饮品"])
+        {
+            tempDic = _Category_yinpin[indexPath.row];
+        }
+        if ([tempString isEqualToString:@"热销"])
+        {
+            tempDic = _Category_rexiao[indexPath.row];
+        }
+    
+        [self.CellDelegate ClickTabelViewCellWithGoodsDic:tempDic];
+    }
 }
 
 

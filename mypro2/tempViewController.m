@@ -16,6 +16,8 @@
 #import "ManageOrder.h"
 #import "OpOrder.h"
 
+#import "OrderViewController.h"
+
 
 
 @interface tempViewController ()
@@ -27,29 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    [OpShopCar creatTableForShopCar];
-    [OpOrder creatTableForOrder];
-    
-    ManageShopCar *tempShop = [[ManageShopCar alloc]init];
-    
-    tempShop.buyer = @"用户名1";           //用户名
-    tempShop.shopName = @"商店名称1";      //商店名称
-    tempShop.goodName = @"商品名称1";      //商品名称
-    tempShop.goodPrice = @"商品单价1";     //商品单价
-    tempShop.goodNum = @"商品数量1";       //商品数量
-    tempShop.goodAllMoney = @"商品总价1";  //商品总价
-    
-    [OpShopCar addToShopCar:tempShop];
-    
-//    /** 选择用户 （buyer == nil,打印所以用户） */
-//    -(FileState)selectShopCarByWho:(NSString*)buyer andSaveArray:(NSMutableArray**)array;
-//    /** 删除用户 （ManageShopCar模型中的buyer，shopName，goodName 一定要填，其他随意，buyer == nil 删表）*/
-//    -(FileState)deletShopCarByWho:(ManageShopCar *)shopcardata andWare:(NSString *)shopname;
-//    /** 更新用户 （ManageShopCar模型中的buyer，shopName，goodName 一定要填，其他随意） */
-//    -(FileState)upShopCarData:(ManageShopCar *)shopcardata withStatu:(ShopCarUpData)statu;
-    
-    
 }
 
 
@@ -94,11 +73,41 @@
 {
 //    [CreatPlist CreatGoodsPlist];
     
+    [OpShopCar creatTableForShopCar];
+    [OpOrder creatTableForOrder];
+
+    
+#if 1
     RootViewController *tempRoot = [[RootViewController alloc]init];
     tempRoot.shopAndGoodsModel = self.shopAndGoodsModel;
     [self presentViewController:tempRoot animated:YES completion:^{
         
     }];
+#else
+
+    OrderViewController *tempRoot1 = [[OrderViewController alloc]init];
+    tempRoot1.title = @"ONE_1";
+    UINavigationController *orderNavi1 = [[UINavigationController alloc]initWithRootViewController:tempRoot1];
+    
+    OrderViewController *tempRoot2 = [[OrderViewController alloc]init];
+    tempRoot2.title = @"TWO_2";
+    
+    OrderViewController *tempRoot3 = [[OrderViewController alloc]init];
+    tempRoot3.title = @"THREE_3";
+    UINavigationController *orderNavi3 = [[UINavigationController alloc]initWithRootViewController:tempRoot3];
+    
+    OrderViewController *tempRoot4 = [[OrderViewController alloc]init];
+    tempRoot4.title = @"FOUR_4";
+    
+    
+    UITabBarController *temp = [[UITabBarController alloc]init];
+    
+    [temp setViewControllers:@[orderNavi1,tempRoot2,orderNavi3,tempRoot4]];
+    
+    [self presentViewController:temp animated:YES completion:^{
+        
+    }];
+#endif
 }
 
 - (void)didReceiveMemoryWarning {

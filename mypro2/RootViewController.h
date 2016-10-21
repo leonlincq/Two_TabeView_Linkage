@@ -17,7 +17,7 @@
 
 @class ChainReactionView;
 
-@interface RootViewController : UIViewController<myNaviBackDelegate,backToShopAndGoodsProtocol,suretToOrderProtocol>
+@interface RootViewController : UIViewController<myNaviBackDelegate,backToShopAndGoodsProtocol,suretToOrderProtocol,CellClickProtocol>
 
 @property (nonatomic,copy) NSString *shopName;;
 

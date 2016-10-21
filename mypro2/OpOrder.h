@@ -13,7 +13,8 @@
 
 typedef NS_ENUM(NSUInteger,OrderSelect)
 {
-    OrderSelect_Buyer  = 0x00
+    OrderSelect_Buyer       = 0x00,
+    OrderSelect_orderNum    = 0x01
 };
 
 typedef NS_ENUM(NSUInteger,OrderUpData)

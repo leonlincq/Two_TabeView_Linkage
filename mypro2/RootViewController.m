@@ -16,6 +16,11 @@
 
 #import "MakeOrderViewController.h"
 
+#import "GoodsDetailViewController.h"
+
+#define shopDetaiToolbar_TAG 101
+
+
 
 @interface RootViewController ()<UIScrollViewDelegate>
 
@@ -88,6 +93,9 @@
     
     //添加中间和下面的的scrollView
     _chainView = [[ChainReactionView alloc] initWithFrame:CGRectMake(0, SHOPDETAIL_HEIGHT + FALSE_NAVI_HEIGHT  + STATUS_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - FALSE_NAVI_HEIGHT - SHOPCAR_HEIGHT - STATUS_HEIGHT - SHOPDETAIL_HEIGHT) andSetModel:self.shopAndGoodsModel];
+    
+    _chainView.linkView.CellDelegate = self;
+    
     [_myScrollView addSubview:_chainView];
     
     //添加最下面的商店信息
@@ -156,9 +164,23 @@
 
 -(void)backToShopAndGoods
 {
-    ShopToolbar *tempToolView = [self.view viewWithTag:101];
+    ShopToolbar *tempToolView = [self.view viewWithTag:shopDetaiToolbar_TAG];
     [tempToolView removeFromSuperview];
 }
+
+-(void)ClickTabelViewCellWithGoodsDic:(NSDictionary *)dic
+{
+    GoodsDetailViewController *goodDetail = [[GoodsDetailViewController alloc]init];
+    goodDetail.goodsDetailDic = dic;
+
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self presentViewController:goodDetail animated:YES completion:^{
+            
+        }];
+    });
+}
+
+
 
 
 #pragma mark -代理
@@ -192,7 +214,7 @@
     ShopToolbar *shopDetaiToolbar = [[ShopToolbar alloc]initWithFrame:[UIScreen mainScreen].bounds];
     shopDetaiToolbar.backDelegate = self;
     shopDetaiToolbar.shopData = _shopAndGoodsModel;
-    shopDetaiToolbar.tag = 101;
+    shopDetaiToolbar.tag = shopDetaiToolbar_TAG;
     [self.view addSubview:shopDetaiToolbar];
 }
 
@@ -259,7 +281,6 @@
     
     tempView.backgroundColor = [UIColor redColor];
     [tempView.layer setCornerRadius:12];
-    tempView.tag = 111;
     [self.view addSubview:tempView];
     
     [UIView animateWithDuration:0.3 animations:^{

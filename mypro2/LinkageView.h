@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SectionThirdModel.h"
 
-@protocol LinkageCellButtonProtocol <NSObject>
+@protocol CellClickProtocol <NSObject>
 
--(void)shopCarAddGoodsIndexPath:(NSIndexPath *)indexpath;
+-(void)ClickTabelViewCellWithGoodsDic:(NSDictionary *)dic;
 
 @end
 
@@ -19,6 +19,8 @@
 @interface LinkageView : UIView
 
 @property (nonatomic,strong) SectionThirdModel *shopAndGoodsModel;
+
+@property (nonatomic,strong) id<CellClickProtocol> CellDelegate;
 
 - (instancetype)initWithFrame:(CGRect)frame  andSetModel:(SectionThirdModel *)shopAndGoodsModel;
 

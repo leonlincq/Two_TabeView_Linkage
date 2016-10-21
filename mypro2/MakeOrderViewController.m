@@ -12,6 +12,11 @@
 #import "ManageOrder.h"
 #import "OpOrder.h"
 
+#define tempCir_TAG         101
+#define tempNotiView_TAG    102
+#define toOrderButton_TAG   103
+
+
 @interface MakeOrderViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) UIView *titleView;
@@ -23,6 +28,8 @@
 @property (nonatomic,strong) UILabel *moneyLabel;
 
 @property (nonatomic,assign) NSUInteger checkAddress;
+
+@property (nonatomic,assign) BOOL isMakingOrder;
 
 @end
 
@@ -39,6 +46,7 @@
         [self.view addSubview:self.orderTableView];
         [self.view addSubview:self.ButtomView];
         _checkAddress = 0;
+        _isMakingOrder = NO;
     }
     return self;
 }
@@ -96,6 +104,7 @@
         [_ButtomView addSubview:_moneyLabel];
         
         UIButton *toOrderButton = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 100, 0, 100, 60)];
+        toOrderButton.tag = toOrderButton_TAG;
         toOrderButton.backgroundColor = [UIColor redColor];
         [toOrderButton setTitle:@"确认下单" forState:UIControlStateNormal];
         toOrderButton.titleLabel.textColor = [UIColor whiteColor];
@@ -109,7 +118,11 @@
 #pragma mark - 返回图片点击
 - (void)backTap:(UITapGestureRecognizer *)recognizer
 {
-    NSLog(@"点击");
+    if (_isMakingOrder)
+    {
+        return;
+    }
+    
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -240,6 +253,14 @@
     return sumMoney;
 }
 
+#pragma mark - 读取配送费
+-(NSInteger)readSentMoney
+{
+    NSDictionary *tempDic = self.allChooseGoods[0];
+    
+    return [[tempDic objectForKey:@"sentMoney"]integerValue];
+}
+
 #pragma mark - 左下角总金额
 -(void)setAllChooseGoods:(NSArray *)allChooseGoods
 {
@@ -250,15 +271,18 @@
     self.moneyLabel.textColor = [UIColor blackColor];
 }
 
-#pragma mark - 读取配送费
--(NSInteger)readSentMoney
-{
-    NSDictionary *tempDic = self.allChooseGoods[0];
-    
-    return [[tempDic objectForKey:@"sentMoney"]integerValue];
-}
+
 
 #pragma mark - 读取登录信息
+-(NSString *)readUserNameByPlist
+{
+    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"userinfo.plist"];
+    
+    NSDictionary *tempDic = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    return [tempDic objectForKey:@"手机号码"];
+}
+
 -(NSString *)readMoneyByPlist
 {
     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"userinfo.plist"];
@@ -294,10 +318,26 @@
     
     return address;
 }
+#pragma mark - 修改登录信息
+-(void)changeMoneyByPlist:(NSUInteger)money
+{
+    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"userinfo.plist"];
+    
+    NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+    
+    NSUInteger myMoney = [[tempDic objectForKey:@"余额"]integerValue];
+    
+    [tempDic setObject:[NSString stringWithFormat:@"%ld",myMoney - money] forKey:@"余额"];
+    [tempDic writeToFile:path atomically:YES];
+    
+}
 
 #pragma mark - 生成订单
 -(void)sureToOrder:(UIButton *)buttonClick
 {
+    _isMakingOrder = YES;
+    buttonClick.enabled = NO;
+    
     if ([[self readMoneyByPlist]integerValue]< [self countMoney] + [self readSentMoney])
     {
         UILabel *tempNotiView = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT/2-100, 200, 200)];
@@ -309,7 +349,7 @@
         tempNotiView.alpha = 0.8;
         tempNotiView.layer.masksToBounds = YES;
         [tempNotiView.layer setCornerRadius:50];
-        tempNotiView.tag = 102;
+        tempNotiView.tag = tempNotiView_TAG;
         [self.view addSubview:tempNotiView];
         
         [self performSelector:@selector(removeNotiView) withObject:nil afterDelay:2];
@@ -318,19 +358,16 @@
     }
     
     CircleRevolve *tempCir = [[CircleRevolve alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT/2-100, 200, 200)];
-    tempCir.tag = 101;
+    tempCir.tag = tempCir_TAG;
     [self.view addSubview:tempCir];
     
     [self performSelector:@selector(showLabelView) withObject:nil afterDelay:2];
-    
-    buttonClick.enabled = NO;
 }
 
-#warning - 生成订单要减掉金额，Plist And Sqlite ？ 创建订单Plist
-
+#warning - 减掉金额 Sqlite
 -(void)showLabelView
 {
-    CircleRevolve *temp = [self.view viewWithTag:101];
+    CircleRevolve *temp = [self.view viewWithTag:tempCir_TAG];
     [temp removeFromSuperview];
     
     UILabel *tempNotiView = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT/2-100, 200, 200)];
@@ -344,6 +381,7 @@
     [tempNotiView.layer setCornerRadius:50];
     [self.view addSubview:tempNotiView];
     
+    [self changeMoneyByPlist:([self countMoney] + [self readSentMoney])];
     [self makeNewOrder];
     
     [self performSelector:@selector(backToRoot) withObject:nil afterDelay:2];
@@ -352,23 +390,43 @@
 #pragma mark - 订单生产 判断订单号
 -(void)makeNewOrder
 {
+    NSMutableArray *saveArray = [[NSMutableArray alloc]init];
     ManageOrder *orderModel = [[ManageOrder alloc]init];
-    orderModel.orderNum = @"1";             //订单号
-    orderModel.orderState = @"已取消";     //订单状态
-    orderModel.orderEva = nil;              //订单评价
-    orderModel.orderEvaStart = nil;         //订单评价星级
-
-    orderModel.buyer = @"1";                //购买者
-    orderModel.shopName = @"已取消";       //商店名字
-    orderModel.goodName = nil;              //商品名字
-    orderModel.goodPrice = nil;             //商品价格
-    orderModel.goodNum = @"已取消";        //商品数量
-    orderModel.goodAllMoney = nil;          //商品总金额
-    orderModel.address = nil;             //收货地址
-
+    
+    orderModel.orderNum = @"1";     //设置订单号
+    while (1)
+    {
+        [OpOrder selectOrderByWho:orderModel withStatu:OrderSelect_orderNum andSaveArray:&saveArray];
+        
+        if (saveArray.count == 0)
+        {
+            break;
+        }
+        else
+        {
+            orderModel.orderNum = [NSString stringWithFormat:@"%ld",[orderModel.orderNum integerValue]+1];
+        }
+    }
+    
+    orderModel.orderState       = @"等待收货";      //订单状态
+    orderModel.orderEva         = nil;          //订单评价
+    orderModel.orderEvaStart    = nil;          //订单评价星级
+    orderModel.buyer            = [self readUserNameByPlist];   //购买者
+    orderModel.shopName         = self.storeName;               //商店名字
+    orderModel.address          = [self readAddressNameByPlistAtIndex:self.checkAddress];   //收货地址
+    
+    for (NSUInteger i = 0; i < self.allChooseGoods.count; i++)
+    {
+        NSDictionary *tempDic = self.allChooseGoods[i];
+        
+        orderModel.goodName     = [tempDic objectForKey:@"goodsName"];  //商品名字
+        orderModel.goodPrice    = [tempDic objectForKey:@"price"];      //商品价格
+        orderModel.goodNum      = [tempDic objectForKey:@"numb"];        //商品数量
+        orderModel.goodAllMoney = [tempDic objectForKey:@"money"];      //商品总金额
+        
+        [OpOrder addToOrder:orderModel];
+    }
 }
-
-
 
 -(void)backToRoot
 {
@@ -380,8 +438,11 @@
 
 -(void)removeNotiView
 {
-    UILabel *temp = [self.view viewWithTag:102];
+    UILabel *temp = [self.view viewWithTag:tempNotiView_TAG];
     [temp removeFromSuperview];
+    _isMakingOrder = NO;
+    UIButton *sureButton = [self.ButtomView viewWithTag:toOrderButton_TAG];
+    sureButton.enabled = YES;
 }
 
 
