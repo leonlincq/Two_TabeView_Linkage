@@ -78,6 +78,7 @@
 		25E986FB1DB9A999004E0906 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E986F91DB9A999004E0906 /* add.png */; };
 		25E987031DB9B16A004E0906 /* GoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E987011DB9B16A004E0906 /* GoodsDetailViewController.m */; };
 		25E987041DB9B16A004E0906 /* GoodsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25E987021DB9B16A004E0906 /* GoodsDetailViewController.xib */; };
+		25E987081DB9DB6D004E0906 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E987061DB9DB6D004E0906 /* OrderTableViewCell.m */; };
 		25EAF62C1DADFED100C3A6A9 /* ShopToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EAF62B1DADFED100C3A6A9 /* ShopToolbar.m */; };
 		25EAF6301DAE086E00C3A6A9 /* back_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF62F1DAE086E00C3A6A9 /* back_cross.png */; };
 		25EAF6361DAE197200C3A6A9 /* RightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EAF6341DAE197200C3A6A9 /* RightTableViewCell.m */; };
@@ -90,8 +91,6 @@
 		25F677161DB8A00600BF4883 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F677141DB8A00600BF4883 /* OrderViewController.m */; };
 		25F677171DB8A00600BF4883 /* OrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25F677151DB8A00600BF4883 /* OrderViewController.xib */; };
 		25F677191DB8A42F00BF4883 /* askLoading.png in Resources */ = {isa = PBXBuildFile; fileRef = 25F677181DB8A42F00BF4883 /* askLoading.png */; };
-		25F6771D1DB8B8BB00BF4883 /* OrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F6771B1DB8B8BB00BF4883 /* OrderTableViewCell.m */; };
-		25F6771E1DB8B8BB00BF4883 /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25F6771C1DB8B8BB00BF4883 /* OrderTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +216,8 @@
 		25E987001DB9B16A004E0906 /* GoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailViewController.h; sourceTree = "<group>"; };
 		25E987011DB9B16A004E0906 /* GoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailViewController.m; sourceTree = "<group>"; };
 		25E987021DB9B16A004E0906 /* GoodsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsDetailViewController.xib; sourceTree = "<group>"; };
+		25E987051DB9DB6D004E0906 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
+		25E987061DB9DB6D004E0906 /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
 		25EAF62A1DADFED100C3A6A9 /* ShopToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopToolbar.h; sourceTree = "<group>"; };
 		25EAF62B1DADFED100C3A6A9 /* ShopToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopToolbar.m; sourceTree = "<group>"; };
 		25EAF62F1DAE086E00C3A6A9 /* back_cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_cross.png; path = mypro2/back_cross.png; sourceTree = "<group>"; };
@@ -235,9 +236,6 @@
 		25F677141DB8A00600BF4883 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
 		25F677151DB8A00600BF4883 /* OrderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderViewController.xib; sourceTree = "<group>"; };
 		25F677181DB8A42F00BF4883 /* askLoading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = askLoading.png; sourceTree = "<group>"; };
-		25F6771A1DB8B8BB00BF4883 /* OrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderTableViewCell.h; sourceTree = "<group>"; };
-		25F6771B1DB8B8BB00BF4883 /* OrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderTableViewCell.m; sourceTree = "<group>"; };
-		25F6771C1DB8B8BB00BF4883 /* OrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -567,9 +565,8 @@
 				25F677131DB8A00600BF4883 /* OrderViewController.h */,
 				25F677141DB8A00600BF4883 /* OrderViewController.m */,
 				25F677151DB8A00600BF4883 /* OrderViewController.xib */,
-				25F6771A1DB8B8BB00BF4883 /* OrderTableViewCell.h */,
-				25F6771B1DB8B8BB00BF4883 /* OrderTableViewCell.m */,
-				25F6771C1DB8B8BB00BF4883 /* OrderTableViewCell.xib */,
+				25E987051DB9DB6D004E0906 /* OrderTableViewCell.h */,
+				25E987061DB9DB6D004E0906 /* OrderTableViewCell.m */,
 			);
 			name = orderList;
 			sourceTree = "<group>";
@@ -700,7 +697,6 @@
 				25DF81E01DB45F3100CBFABE /* shopCarPic.png in Resources */,
 				250D12E41DAF743F00105DDB /* GoodsImage28.png in Resources */,
 				25DE2A5B1DACE08300ABFCFA /* NaviBackButton.png in Resources */,
-				25F6771E1DB8B8BB00BF4883 /* OrderTableViewCell.xib in Resources */,
 				250D12D41DAF743F00105DDB /* GoodsImage9.png in Resources */,
 				250D12D81DAF743F00105DDB /* GoodsImage13.png in Resources */,
 				25688F391DAA20CB002AA448 /* Main.storyboard in Resources */,
@@ -763,6 +759,7 @@
 				25B233861DB622CE00F81785 /* MakeOrderViewController.m in Sources */,
 				25DE29221DAC7AD000ABFCFA /* ShopCarView.m in Sources */,
 				25EAF6361DAE197200C3A6A9 /* RightTableViewCell.m in Sources */,
+				25E987081DB9DB6D004E0906 /* OrderTableViewCell.m in Sources */,
 				25231C591DAB5F7B009DD12A /* ChainReactionView.m in Sources */,
 				25688F331DAA20CB002AA448 /* AppDelegate.m in Sources */,
 				25DE2A571DACD89F00ABFCFA /* ShopNaviView.m in Sources */,
@@ -775,7 +772,6 @@
 				25DF825E1DB4C3EC00CBFABE /* FMResultSet.m in Sources */,
 				25231C5C1DAB6130009DD12A /* ChainReactionLabelButton.m in Sources */,
 				25F677161DB8A00600BF4883 /* OrderViewController.m in Sources */,
-				25F6771D1DB8B8BB00BF4883 /* OrderTableViewCell.m in Sources */,
 				25DE2A4B1DACD49600ABFCFA /* tempViewController.m in Sources */,
 				25688F301DAA20CB002AA448 /* main.m in Sources */,
 				25688F731DAA2DD9002AA448 /* TableViewHeaderView.m in Sources */,

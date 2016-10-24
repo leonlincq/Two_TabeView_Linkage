@@ -10,6 +10,6 @@
 
 @interface GoodsDetailViewController : UIViewController
 
-@property (nonatomic,strong) NSDictionary *goodsDetailDic;
+- (instancetype)initWithDic:(NSDictionary *)dataDic;
 
 @end

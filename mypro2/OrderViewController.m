@@ -129,6 +129,7 @@ typedef NS_ENUM(NSUInteger,OrderListViewState)
         [_LoadAndOrderView addSubview:orderListView];
         orderListView.dataSource = self;
         orderListView.delegate = self;
+        [orderListView registerClass:[OrderTableViewCell class] forCellReuseIdentifier:@"orderListCell"];
     }
     return _LoadAndOrderView;
 }
@@ -146,15 +147,24 @@ typedef NS_ENUM(NSUInteger,OrderListViewState)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    OrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderListCell"];
-    if (!cell)
-    {
-        cell = [[OrderTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"orderListCell"];
-    }
-    cell.name = @"sadf124沙发斯蒂芬";
+    OrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"orderListCell" forIndexPath:indexPath];
+
+    cell.shopImageName = @"123";
+    cell.shopName = @"asd";
+    cell.detailText = @"123asd";
+    
     return cell;
 }
 
+#pragma mark - 代理
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 5.0;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 5.0;
+}
 
 
 

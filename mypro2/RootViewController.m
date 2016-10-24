@@ -170,8 +170,8 @@
 
 -(void)ClickTabelViewCellWithGoodsDic:(NSDictionary *)dic
 {
-    GoodsDetailViewController *goodDetail = [[GoodsDetailViewController alloc]init];
-    goodDetail.goodsDetailDic = dic;
+
+    GoodsDetailViewController *goodDetail = [[GoodsDetailViewController alloc]initWithDic:dic];
 
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [self presentViewController:goodDetail animated:YES completion:^{
