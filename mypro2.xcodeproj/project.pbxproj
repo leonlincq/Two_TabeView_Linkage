@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		250D12A21DAF548500105DDB /* ShopAndGoods.plist in Resources */ = {isa = PBXBuildFile; fileRef = 250D12A11DAF548500105DDB /* ShopAndGoods.plist */; };
 		250D12AA1DAF643D00105DDB /* CreatPlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 250D12A91DAF643D00105DDB /* CreatPlist.m */; };
-		250D12CC1DAF743F00105DDB /* GoodsImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12B11DAF743F00105DDB /* GoodsImage1.png */; };
-		250D12CD1DAF743F00105DDB /* GoodsImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12B21DAF743F00105DDB /* GoodsImage2.png */; };
+		250D12CC1DAF743F00105DDB /* GoodsImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12B11DAF743F00105DDB /* GoodsImage2.png */; };
+		250D12CD1DAF743F00105DDB /* GoodsImage11.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12B21DAF743F00105DDB /* GoodsImage11.png */; };
 		250D12CE1DAF743F00105DDB /* GoodsImage3.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12B31DAF743F00105DDB /* GoodsImage3.png */; };
 		250D12CF1DAF743F00105DDB /* GoodsImage4.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12B41DAF743F00105DDB /* GoodsImage4.png */; };
 		250D12D01DAF743F00105DDB /* GoodsImage5.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12B51DAF743F00105DDB /* GoodsImage5.png */; };
@@ -19,7 +19,7 @@
 		250D12D31DAF743F00105DDB /* GoodsImage8.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12B81DAF743F00105DDB /* GoodsImage8.png */; };
 		250D12D41DAF743F00105DDB /* GoodsImage9.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12B91DAF743F00105DDB /* GoodsImage9.png */; };
 		250D12D51DAF743F00105DDB /* GoodsImage10.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12BA1DAF743F00105DDB /* GoodsImage10.png */; };
-		250D12D61DAF743F00105DDB /* GoodsImage11.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12BB1DAF743F00105DDB /* GoodsImage11.png */; };
+		250D12D61DAF743F00105DDB /* GoodsImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12BB1DAF743F00105DDB /* GoodsImage1.png */; };
 		250D12D71DAF743F00105DDB /* GoodsImage12.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12BC1DAF743F00105DDB /* GoodsImage12.png */; };
 		250D12D81DAF743F00105DDB /* GoodsImage13.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12BD1DAF743F00105DDB /* GoodsImage13.png */; };
 		250D12D91DAF743F00105DDB /* GoodsImage14.png in Resources */ = {isa = PBXBuildFile; fileRef = 250D12BE1DAF743F00105DDB /* GoodsImage14.png */; };
@@ -87,6 +87,7 @@
 		25EAF63A1DAE1C6500C3A6A9 /* subGoods.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF6381DAE1C6500C3A6A9 /* subGoods.png */; };
 		25EAF63B1DAE1C6500C3A6A9 /* addGoods.png in Resources */ = {isa = PBXBuildFile; fileRef = 25EAF6391DAE1C6500C3A6A9 /* addGoods.png */; };
 		25EAF6441DAE20CD00C3A6A9 /* SectionThirdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 25EAF6421DAE20CD00C3A6A9 /* SectionThirdModel.m */; };
+		25EF4CAC1DE6BFDD00ACEB06 /* userinfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25EF4CAB1DE6BFDD00ACEB06 /* userinfo.plist */; };
 		25F12B731DB711E00061B1B9 /* VWWWaterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F12B721DB711E00061B1B9 /* VWWWaterView.m */; };
 		25F12B7D1DB743F30061B1B9 /* CircleRevolve.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F12B7C1DB743F30061B1B9 /* CircleRevolve.m */; };
 		25F677161DB8A00600BF4883 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F677141DB8A00600BF4883 /* OrderViewController.m */; };
@@ -115,8 +116,8 @@
 		250D12A11DAF548500105DDB /* ShopAndGoods.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ShopAndGoods.plist; sourceTree = "<group>"; };
 		250D12A81DAF643D00105DDB /* CreatPlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatPlist.h; sourceTree = "<group>"; };
 		250D12A91DAF643D00105DDB /* CreatPlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatPlist.m; sourceTree = "<group>"; };
-		250D12B11DAF743F00105DDB /* GoodsImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage1.png; sourceTree = "<group>"; };
-		250D12B21DAF743F00105DDB /* GoodsImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage2.png; sourceTree = "<group>"; };
+		250D12B11DAF743F00105DDB /* GoodsImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage2.png; sourceTree = "<group>"; };
+		250D12B21DAF743F00105DDB /* GoodsImage11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage11.png; sourceTree = "<group>"; };
 		250D12B31DAF743F00105DDB /* GoodsImage3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage3.png; sourceTree = "<group>"; };
 		250D12B41DAF743F00105DDB /* GoodsImage4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage4.png; sourceTree = "<group>"; };
 		250D12B51DAF743F00105DDB /* GoodsImage5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage5.png; sourceTree = "<group>"; };
@@ -125,7 +126,7 @@
 		250D12B81DAF743F00105DDB /* GoodsImage8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage8.png; sourceTree = "<group>"; };
 		250D12B91DAF743F00105DDB /* GoodsImage9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage9.png; sourceTree = "<group>"; };
 		250D12BA1DAF743F00105DDB /* GoodsImage10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage10.png; sourceTree = "<group>"; };
-		250D12BB1DAF743F00105DDB /* GoodsImage11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage11.png; sourceTree = "<group>"; };
+		250D12BB1DAF743F00105DDB /* GoodsImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage1.png; sourceTree = "<group>"; };
 		250D12BC1DAF743F00105DDB /* GoodsImage12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage12.png; sourceTree = "<group>"; };
 		250D12BD1DAF743F00105DDB /* GoodsImage13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage13.png; sourceTree = "<group>"; };
 		250D12BE1DAF743F00105DDB /* GoodsImage14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GoodsImage14.png; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 		25EAF6391DAE1C6500C3A6A9 /* addGoods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addGoods.png; path = mypro2/addGoods.png; sourceTree = "<group>"; };
 		25EAF6421DAE20CD00C3A6A9 /* SectionThirdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionThirdModel.m; sourceTree = "<group>"; };
 		25EAF6431DAE20CD00C3A6A9 /* SectionThirdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionThirdModel.h; sourceTree = "<group>"; };
+		25EF4CAB1DE6BFDD00ACEB06 /* userinfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = userinfo.plist; sourceTree = "<group>"; };
 		25F12B711DB711E00061B1B9 /* VWWWaterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWWaterView.h; sourceTree = "<group>"; };
 		25F12B721DB711E00061B1B9 /* VWWWaterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWWaterView.m; sourceTree = "<group>"; };
 		25F12B7B1DB743F30061B1B9 /* CircleRevolve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleRevolve.h; sourceTree = "<group>"; };
@@ -278,8 +280,8 @@
 				25EAF6381DAE1C6500C3A6A9 /* subGoods.png */,
 				25EAF6391DAE1C6500C3A6A9 /* addGoods.png */,
 				25DF81DF1DB45F3100CBFABE /* shopCarPic.png */,
-				250D12B11DAF743F00105DDB /* GoodsImage1.png */,
-				250D12B21DAF743F00105DDB /* GoodsImage2.png */,
+				250D12BB1DAF743F00105DDB /* GoodsImage1.png */,
+				250D12B11DAF743F00105DDB /* GoodsImage2.png */,
 				250D12B31DAF743F00105DDB /* GoodsImage3.png */,
 				250D12B41DAF743F00105DDB /* GoodsImage4.png */,
 				250D12B51DAF743F00105DDB /* GoodsImage5.png */,
@@ -288,7 +290,7 @@
 				250D12B81DAF743F00105DDB /* GoodsImage8.png */,
 				250D12B91DAF743F00105DDB /* GoodsImage9.png */,
 				250D12BA1DAF743F00105DDB /* GoodsImage10.png */,
-				250D12BB1DAF743F00105DDB /* GoodsImage11.png */,
+				250D12B21DAF743F00105DDB /* GoodsImage11.png */,
 				250D12BC1DAF743F00105DDB /* GoodsImage12.png */,
 				250D12BD1DAF743F00105DDB /* GoodsImage13.png */,
 				250D12BE1DAF743F00105DDB /* GoodsImage14.png */,
@@ -357,6 +359,7 @@
 			children = (
 				25F677081DB89AE300BF4883 /* orderList */,
 				250D12EE1DAF8C7700105DDB /* Foundation+Log.m */,
+				25EF4CAB1DE6BFDD00ACEB06 /* userinfo.plist */,
 				250D12A11DAF548500105DDB /* ShopAndGoods.plist */,
 				25DF81E31DB476F200CBFABE /* GoodsDetail.plist */,
 				251EC6581DE58DFB00612192 /* shopCategory.plist */,
@@ -706,6 +709,7 @@
 				250D12D81DAF743F00105DDB /* GoodsImage13.png in Resources */,
 				25688F391DAA20CB002AA448 /* Main.storyboard in Resources */,
 				25EAF6371DAE197200C3A6A9 /* RightTableViewCell.xib in Resources */,
+				25EF4CAC1DE6BFDD00ACEB06 /* userinfo.plist in Resources */,
 				25E987041DB9B16A004E0906 /* GoodsDetailViewController.xib in Resources */,
 				25EAF63A1DAE1C6500C3A6A9 /* subGoods.png in Resources */,
 				250D12D21DAF743F00105DDB /* GoodsImage7.png in Resources */,
@@ -715,14 +719,14 @@
 				25EAF6301DAE086E00C3A6A9 /* back_cross.png in Resources */,
 				250D12D31DAF743F00105DDB /* GoodsImage8.png in Resources */,
 				251EC6591DE58DFB00612192 /* shopCategory.plist in Resources */,
-				250D12D61DAF743F00105DDB /* GoodsImage11.png in Resources */,
+				250D12D61DAF743F00105DDB /* GoodsImage1.png in Resources */,
 				250D12DC1DAF743F00105DDB /* GoodsImage18.png in Resources */,
 				250D12E01DAF743F00105DDB /* GoodsImage22.png in Resources */,
-				250D12CC1DAF743F00105DDB /* GoodsImage1.png in Resources */,
+				250D12CC1DAF743F00105DDB /* GoodsImage2.png in Resources */,
 				25DE2A4C1DACD49600ABFCFA /* tempViewController.xib in Resources */,
 				250D12D51DAF743F00105DDB /* GoodsImage10.png in Resources */,
 				250D12E11DAF743F00105DDB /* GoodsImage23.png in Resources */,
-				250D12CD1DAF743F00105DDB /* GoodsImage2.png in Resources */,
+				250D12CD1DAF743F00105DDB /* GoodsImage11.png in Resources */,
 				250D12E31DAF743F00105DDB /* GoodsImage27.png in Resources */,
 				250D12E21DAF743F00105DDB /* GoodsImage26.png in Resources */,
 				250D12CE1DAF743F00105DDB /* GoodsImage3.png in Resources */,

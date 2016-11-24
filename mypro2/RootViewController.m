@@ -462,7 +462,7 @@
         
         NSArray *tempAllData = [NSArray arrayWithContentsOfFile:[[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"shopCategory.plist"]];      //先拿Plist
         
-        NSLog(@"%@",NSHomeDirectory());
+//        NSLog(@"%@",NSHomeDirectory());
         
         NSDictionary *tempDataDic = tempAllData[indexPath.section];     //再拿第几组
                                 

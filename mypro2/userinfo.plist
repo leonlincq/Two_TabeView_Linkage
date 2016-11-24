@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>余额</key>
+	<string>1000</string>
+	<key>地址</key>
+	<array>
+		<array>
+			<string>福建</string>
+			<string>泉州</string>
+			<string>小林</string>
+			<string>12345678912</string>
+		</array>
+		<array>
+			<string>福建</string>
+			<string>厦门</string>
+			<string>小林</string>
+			<string>12345678912</string>
+		</array>
+		<array>
+			<string>福建</string>
+			<string>福州</string>
+			<string>小林</string>
+			<string>12345678912</string>
+		</array>
+	</array>
+	<key>地址组数</key>
+	<string>3</string>
+	<key>密码</key>
+	<string>123456</string>
+	<key>手机号码</key>
+	<string>12345678912</string>
+	<key>用户名</key>
+	<string>小林</string>
+</dict>
+</plist>

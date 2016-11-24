@@ -276,7 +276,7 @@
 #pragma mark - 读取登录信息
 -(NSString *)readUserNameByPlist
 {
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"userinfo.plist"];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
     
     NSDictionary *tempDic = [NSDictionary dictionaryWithContentsOfFile:path];
     
@@ -285,7 +285,7 @@
 
 -(NSString *)readMoneyByPlist
 {
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"userinfo.plist"];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
     
     NSDictionary *tempDic = [NSDictionary dictionaryWithContentsOfFile:path];
 
@@ -294,7 +294,7 @@
 
 -(NSUInteger)readAddressNumbByPlist
 {
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"userinfo.plist"];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
     
     NSDictionary *tempDic = [NSDictionary dictionaryWithContentsOfFile:path];
     
@@ -306,7 +306,7 @@
 
 -(NSString *)readAddressNameByPlistAtIndex:(NSUInteger)index
 {
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"userinfo.plist"];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
     
     NSDictionary *tempDic = [NSDictionary dictionaryWithContentsOfFile:path];
     
@@ -321,7 +321,7 @@
 #pragma mark - 修改登录信息
 -(void)changeMoneyByPlist:(NSUInteger)money
 {
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"userinfo.plist"];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
     
     NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
     
@@ -364,7 +364,6 @@
     [self performSelector:@selector(showLabelView) withObject:nil afterDelay:2];
 }
 
-#warning - 减掉金额 Sqlite
 -(void)showLabelView
 {
     CircleRevolve *temp = [self.view viewWithTag:tempCir_TAG];
@@ -374,7 +373,7 @@
     tempNotiView.backgroundColor = [UIColor grayColor];
     tempNotiView.text = @"订单生成成功";
     tempNotiView.textColor = [UIColor blackColor];
-    tempNotiView.font = [UIFont boldSystemFontOfSize:17.0];
+    tempNotiView.font = [UIFont boldSystemFontOfSize:14.0];
     tempNotiView.textAlignment = NSTextAlignmentCenter;
     tempNotiView.alpha = 0.8;
     tempNotiView.layer.masksToBounds = YES;

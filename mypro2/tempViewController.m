@@ -110,6 +110,24 @@
 #endif
 }
 
+- (IBAction)addMoney:(id)sender
+{
+    
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
+    
+    NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+    
+    
+    [tempDic setObject:@"1000" forKey:@"余额"];
+    
+    [tempDic writeToFile:path atomically:YES];
+
+}
+
+
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
