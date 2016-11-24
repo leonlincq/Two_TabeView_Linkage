@@ -59,7 +59,7 @@
 {
     if (!_spaceViewTwo)
     {
-        _spaceViewTwo = [[UIView alloc]initWithFrame:CGRectMake(50, SCREEN_HEIGHT-100-50 -50, SCREEN_WIDTH-100, 2)];
+        _spaceViewTwo = [[UIView alloc]initWithFrame:CGRectMake(50, 150 + 20 + 50 +(SCREEN_HEIGHT-100-50 -50 -20-150-20), SCREEN_WIDTH-100, 2)];
         _spaceViewTwo.backgroundColor = [UIColor grayColor];
     }
     return _spaceViewTwo;
@@ -110,7 +110,7 @@
 {
     if (!_actionInfoLabel)
     {
-        _actionInfoLabel = [[UILabel alloc]initWithFrame:CGRectMake(20 , 150 + 20,  self.frame.size.width - 20 - 20, SCREEN_HEIGHT-100-50 -50 -20-150-20)];
+        _actionInfoLabel = [[UILabel alloc]initWithFrame:CGRectMake(20 , 150 + 20+ 50,  self.frame.size.width - 20 - 20, SCREEN_HEIGHT-100-50 -50 -20-150-20)];
         _actionInfoLabel.numberOfLines = 0;
         _actionInfoLabel.textColor = [UIColor blackColor];
         _actionInfoLabel.textAlignment = NSTextAlignmentLeft;

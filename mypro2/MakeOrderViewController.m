@@ -265,7 +265,7 @@
 -(void)setAllChooseGoods:(NSArray *)allChooseGoods
 {
     _allChooseGoods = allChooseGoods;
-    NSLog(@"%@",_allChooseGoods);
+//    NSLog(@"%@",_allChooseGoods);
     
     self.moneyLabel.text = [NSString stringWithFormat:@"共计 : %ld",[self countMoney] + [self readSentMoney]];
     self.moneyLabel.textColor = [UIColor blackColor];
@@ -340,15 +340,15 @@
     
     if ([[self readMoneyByPlist]integerValue]< [self countMoney] + [self readSentMoney])
     {
-        UILabel *tempNotiView = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT/2-100, 200, 200)];
+        UILabel *tempNotiView = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-50, SCREEN_HEIGHT/2-50, 100, 100)];
         tempNotiView.backgroundColor = [UIColor grayColor];
         tempNotiView.text = @"余额不足";
         tempNotiView.textColor = [UIColor redColor];
-        tempNotiView.font = [UIFont boldSystemFontOfSize:30.0];
+        tempNotiView.font = [UIFont boldSystemFontOfSize:17.0];
         tempNotiView.textAlignment = NSTextAlignmentCenter;
         tempNotiView.alpha = 0.8;
         tempNotiView.layer.masksToBounds = YES;
-        [tempNotiView.layer setCornerRadius:50];
+        [tempNotiView.layer setCornerRadius:20];
         tempNotiView.tag = tempNotiView_TAG;
         [self.view addSubview:tempNotiView];
         
@@ -370,15 +370,15 @@
     CircleRevolve *temp = [self.view viewWithTag:tempCir_TAG];
     [temp removeFromSuperview];
     
-    UILabel *tempNotiView = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, SCREEN_HEIGHT/2-100, 200, 200)];
+    UILabel *tempNotiView = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-50, SCREEN_HEIGHT/2-50, 100, 100)];
     tempNotiView.backgroundColor = [UIColor grayColor];
     tempNotiView.text = @"订单生成成功";
     tempNotiView.textColor = [UIColor blackColor];
-    tempNotiView.font = [UIFont boldSystemFontOfSize:30.0];
+    tempNotiView.font = [UIFont boldSystemFontOfSize:17.0];
     tempNotiView.textAlignment = NSTextAlignmentCenter;
     tempNotiView.alpha = 0.8;
     tempNotiView.layer.masksToBounds = YES;
-    [tempNotiView.layer setCornerRadius:50];
+    [tempNotiView.layer setCornerRadius:20];
     [self.view addSubview:tempNotiView];
     
     [self changeMoneyByPlist:([self countMoney] + [self readSentMoney])];

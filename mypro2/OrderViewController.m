@@ -172,7 +172,7 @@ typedef NS_ENUM(NSUInteger,OrderListViewState)
 #pragma mark - 读取订单信息
 -(OrderListViewState)searchOrderList
 {
-    NSLog(@"%@",NSHomeDirectory());
+//    NSLog(@"%@",NSHomeDirectory());
     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"userinfo.plist"];
     
     NSDictionary *tempDic = [NSDictionary dictionaryWithContentsOfFile:path];

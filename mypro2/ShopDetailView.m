@@ -53,10 +53,10 @@
 {
     if (!_storeImageView)
     {
-        _storeImageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, UPSPECE + 5, 50, 50)];
+        _storeImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, UPSPECE , 40, 40)];
 
         _storeImageView.layer.masksToBounds = YES;
-        [_storeImageView.layer setCornerRadius:15.0];
+        [_storeImageView.layer setCornerRadius:8.0];
     }
     return _storeImageView;
 }
@@ -65,8 +65,9 @@
 {
     if (!_sentPriceTimeLabel)
     {
-        _sentPriceTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(SPECE+50+SPECE, UPSPECE + 5, self.frame.size.width - SPECE - 50 - SPECE- SPECE, 20)];
+        _sentPriceTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(SPECE+50+SPECE, UPSPECE + 5, self.frame.size.width - SPECE - 50 - SPECE- SPECE, 15)];
         _sentPriceTimeLabel.textColor = [UIColor whiteColor];
+        _sentPriceTimeLabel.font = [UIFont systemFontOfSize:15.0];
     }
     return _sentPriceTimeLabel;
 }
@@ -75,9 +76,10 @@
 {
     if (!_welcomeLabel)
     {
-        _welcomeLabel = [[UILabel alloc]initWithFrame:CGRectMake(SPECE+50+SPECE , UPSPECE + 10+5 + 20, self.frame.size.width - SPECE - 50 - SPECE- SPECE, 20)];
+        _welcomeLabel = [[UILabel alloc]initWithFrame:CGRectMake(SPECE+50+SPECE , UPSPECE + 10+5 + 15, self.frame.size.width - SPECE - 50 - SPECE- SPECE, 15)];
         _welcomeLabel.text = @"本店欢迎您下单，用餐高峰期请提前下单";
         _welcomeLabel.textColor = [UIColor whiteColor];
+        _welcomeLabel.font = [UIFont systemFontOfSize:15.0];
     }
     return _welcomeLabel;
 }
@@ -86,8 +88,9 @@
 {
     if (!_actionInfo1Label)
     {
-        _actionInfo1Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+50+5,  self.frame.size.width - SPECE - SPECE, 18)];
+        _actionInfo1Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+30+5,  self.frame.size.width - SPECE - SPECE, 15)];
         _actionInfo1Label.textColor = [UIColor whiteColor];
+        _actionInfo1Label.font = [UIFont systemFontOfSize:13.0];
     }
     return _actionInfo1Label;
 }
@@ -96,8 +99,9 @@
 {
     if (!_actionInfo2Label)
     {
-        _actionInfo2Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+50+5 + 20,  self.frame.size.width - SPECE - SPECE, 18)];
+        _actionInfo2Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+30+5 + 15,  self.frame.size.width - SPECE - SPECE, 15)];
         _actionInfo2Label.textColor = [UIColor whiteColor];
+        _actionInfo2Label.font = [UIFont systemFontOfSize:13.0];
     }
     return _actionInfo2Label;
 }
@@ -106,8 +110,9 @@
 {
     if (!_actionInfo3Label)
     {
-        _actionInfo3Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+50+5 + 20 + 20,  self.frame.size.width - SPECE - SPECE, 18)];
+        _actionInfo3Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+30+5 + 15 + 15,  self.frame.size.width - SPECE - SPECE, 15)];
         _actionInfo3Label.textColor = [UIColor whiteColor];
+        _actionInfo3Label.font = [UIFont systemFontOfSize:13.0];
     }
     return _actionInfo3Label;
 }
@@ -116,8 +121,9 @@
 {
     if (!_actionInfo4Label)
     {
-        _actionInfo4Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+50+5 + 20 + 20 + 20,  self.frame.size.width - SPECE - SPECE, 18)];
+        _actionInfo4Label = [[UILabel alloc]initWithFrame:CGRectMake(SPECE , UPSPECE + 10+30+5 + 15 + 15 + 15,  self.frame.size.width - SPECE - SPECE, 15)];
         _actionInfo4Label.textColor = [UIColor whiteColor];
+        _actionInfo4Label.font = [UIFont systemFontOfSize:13.0];
     }
     return _actionInfo4Label;
 }
@@ -126,8 +132,8 @@
 {
     _shopData = model;
 
-    _storeImageView.image = [UIImage imageNamed:_shopData.storeImage];
-    
+    _storeImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",_shopData.storeImage]];
+
     _sentPriceTimeLabel.text = [NSString stringWithFormat:@"%@ | 送达 %@",_shopData.sellPrace,_shopData.maxTime];
     _actionInfo1Label.text = [NSString stringWithFormat:@"🔴%@",_shopData.actionInfo1];
     _actionInfo2Label.text = [NSString stringWithFormat:@"🔵%@",_shopData.actionInfo2];

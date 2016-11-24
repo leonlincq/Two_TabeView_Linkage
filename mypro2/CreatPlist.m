@@ -111,12 +111,12 @@
         [allArray addObject:tempArray];
     }
     
-    NSLog(@"%@",allArray);
+//    NSLog(@"%@",allArray);
     
-    NSLog(@"-->%d",[allArray writeToFile:[NSHomeDirectory() stringByAppendingPathComponent:@"GoodsDetail.plist"] atomically:YES]);
+//    NSLog(@"-->%d",[allArray writeToFile:[NSHomeDirectory() stringByAppendingPathComponent:@"GoodsDetail.plist"] atomically:YES]);
     
     
-    NSLog(@"%@",NSHomeDirectory());
+//    NSLog(@"%@",NSHomeDirectory());
 }
 
 

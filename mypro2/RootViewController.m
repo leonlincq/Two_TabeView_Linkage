@@ -99,7 +99,7 @@
     [_myScrollView addSubview:_chainView];
     
     //添加最下面的商店信息
-    _buttomView = [[ShopCarView alloc]initWithFrame:CGRectMake(0,SCREEN_HEIGHT-60, SCREEN_WIDTH,60)];
+    _buttomView = [[ShopCarView alloc]initWithFrame:CGRectMake(0,SCREEN_HEIGHT-SHOPCAR_HEIGHT, SCREEN_WIDTH,SHOPCAR_HEIGHT)];
     _buttomView.alpha = 0.8;
     _buttomView.toOrderDelegate = self;
     _buttomView.sentPrice = [self.shopAndGoodsModel.sellPrace substringWithRange:NSMakeRange(3, 3)];
@@ -124,16 +124,16 @@
 {
     if (!_shopCarImageView)
     {
-        _shopCarImageView = [[UIButton alloc]initWithFrame:CGRectMake(15,SCREEN_HEIGHT-15-70, 70, 70)];
+        _shopCarImageView = [[UIButton alloc]initWithFrame:CGRectMake(8,SCREEN_HEIGHT-8-50, 50, 50)];
         [_shopCarImageView setBackgroundImage:[UIImage imageNamed:@"shopCarPic"] forState:UIControlStateNormal];
  
         
-        _shopCarNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(70-26,0, 26, 26)];
+        _shopCarNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(50-18,0, 18, 18)];
         _shopCarNumLabel.textAlignment = NSTextAlignmentCenter;
         _shopCarNumLabel.backgroundColor = [UIColor redColor];
         _shopCarNumLabel.textColor = [UIColor whiteColor];
         _shopCarNumLabel.layer.masksToBounds = YES;
-        [_shopCarNumLabel.layer setCornerRadius:13.0];
+        [_shopCarNumLabel.layer setCornerRadius:9.0];
         
         _shopCarImageView.backgroundColor = [UIColor clearColor];
         
@@ -178,7 +178,9 @@
             
         }];
     });
+
 }
+
 
 
 
@@ -199,9 +201,9 @@
 #pragma mark -观察者
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"%@",keyPath);
-    NSLog(@"%@",change);
-    NSLog(@"%@",[change objectForKey:@"new"]);
+//    NSLog(@"%@",keyPath);
+//    NSLog(@"%@",change);
+//    NSLog(@"%@",[change objectForKey:@"new"]);
     
     [self removeObserver:self forKeyPath:@"isReturn"];
 }
@@ -259,15 +261,15 @@
     
     if (count >=100 && count<1000)
     {
-        _shopCarNumLabel.font = [UIFont systemFontOfSize:13];
+        _shopCarNumLabel.font = [UIFont systemFontOfSize:10];
     }
     if (count >=10 && count<100)
     {
-        _shopCarNumLabel.font = [UIFont systemFontOfSize:17];
+        _shopCarNumLabel.font = [UIFont systemFontOfSize:14];
     }
     if (count >=0 && count<10)
     {
-        _shopCarNumLabel.font = [UIFont systemFontOfSize:23];
+        _shopCarNumLabel.font = [UIFont systemFontOfSize:20];
     }
     
     [noti.userInfo objectForKey:@"indexPath"];
@@ -316,10 +318,10 @@
          
          CGRect tempRect = self.shopCarImageView.frame;
          
-         tempRect.origin.x -= 15;
-         tempRect.origin.y -= 15;
-         tempRect.size.width +=30;
-         tempRect.size.height +=30;
+         tempRect.origin.x -= 8;
+         tempRect.origin.y -= 8;
+         tempRect.size.width +=16;
+         tempRect.size.height +=16;
          self.shopCarImageView.frame = tempRect;
          
          [self performSelector:@selector(shopCarbackNomalSize) withObject:nil afterDelay:0.3];
@@ -333,10 +335,10 @@
         
         CGRect tempRect = self.shopCarImageView.frame;
         
-        tempRect.origin.x += 15;
-        tempRect.origin.y += 15;
-        tempRect.size.width -=30;
-        tempRect.size.height -=30;
+        tempRect.origin.x += 8;
+        tempRect.origin.y += 8;
+        tempRect.size.width -=16;
+        tempRect.size.height -=16;
         self.shopCarImageView.frame = tempRect;
         
     }];
@@ -431,12 +433,12 @@
                 }
                 else
                 {
-                    NSLog(@"数量应该为0了，不应该进去这里");
+//                    NSLog(@"数量应该为0了，不应该进去这里");
                 }
             }
             else
             {
-                NSLog(@"目前只支持加减");
+//                NSLog(@"目前只支持加减");
             }
             
             NSInteger tempPrice = [[self.allGoodsArray[i] objectForKey:@"price"]intValue];
@@ -456,8 +458,12 @@
         
         [tempDic setObject:indexPath forKey:@"indexPath"];
         
-        NSArray *tempAllData = [NSArray arrayWithContentsOfFile:[NSHomeDirectory() stringByAppendingPathComponent:@"shopCategory.plist"]];      //先拿Plist
-                                
+
+        
+        NSArray *tempAllData = [NSArray arrayWithContentsOfFile:[[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"shopCategory.plist"]];      //先拿Plist
+        
+        NSLog(@"%@",NSHomeDirectory());
+        
         NSDictionary *tempDataDic = tempAllData[indexPath.section];     //再拿第几组
                                 
         NSArray *tempArray = [tempDataDic allKeys];                     //获取组名
@@ -465,7 +471,7 @@
         tempArray = [tempDataDic objectForKey:tempArray[0]];            //拿组名
         
         tempDataDic = tempArray[indexPath.row];                         //拿分组下的单品
-        
+
         [tempDic setObject:[tempDataDic objectForKey:@"GoodsName"] forKey:@"goodsName"];
         [tempDic setObject:[tempDataDic objectForKey:@"PreferentPrice"] forKey:@"price"];
         [tempDic setObject:@"1" forKey:@"numb"];

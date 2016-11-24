@@ -146,10 +146,10 @@
 {
     if (!_leftTableView)
     {
-        _leftTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 80, self.frame.size.height) style:UITableViewStylePlain];
+        _leftTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 60, self.frame.size.height) style:UITableViewStylePlain];
         _leftTableView.delegate = self;
         _leftTableView.dataSource = self;
-        _leftTableView.rowHeight = 55;
+        _leftTableView.rowHeight = 50;
         _leftTableView.tableFooterView = [UIView new];
         _leftTableView.showsVerticalScrollIndicator = NO;
         _leftTableView.separatorColor = [UIColor clearColor];
@@ -162,7 +162,7 @@
 {
     if (!_rightTableView)
     {
-        _rightTableView = [[UITableView alloc]initWithFrame:CGRectMake(80,0, SCREEN_WIDTH - 80, self.frame.size.height) style:UITableViewStylePlain];
+        _rightTableView = [[UITableView alloc]initWithFrame:CGRectMake(60,0, SCREEN_WIDTH - 60, self.frame.size.height) style:UITableViewStylePlain];
         _rightTableView.delegate = self;
         _rightTableView.dataSource = self;
         _rightTableView.rowHeight = 80;
@@ -408,8 +408,8 @@
 -(void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    _leftTableView.frame = CGRectMake(0, 0, 80, self.frame.size.height);
-    _rightTableView.frame = CGRectMake(80,0, SCREEN_WIDTH - 80, self.frame.size.height);
+    _leftTableView.frame = CGRectMake(0, 0, 60, self.frame.size.height);
+    _rightTableView.frame = CGRectMake(60,0, SCREEN_WIDTH - 60, self.frame.size.height);
 }
 
 - (void)searchCurrenShopDetail
@@ -490,8 +490,9 @@
         
         [allArray addObject:tempDic];
     }
-    [allArray writeToFile:[NSHomeDirectory() stringByAppendingPathComponent:@"shopCategory.plist"] atomically:YES];
-    NSLog(@"%@",NSHomeDirectory());
+
+    [allArray writeToFile:[[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"shopCategory.plist"] atomically:YES];
+    
 }
 
 #pragma mark - 接受通知

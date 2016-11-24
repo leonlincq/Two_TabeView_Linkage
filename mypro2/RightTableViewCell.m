@@ -68,7 +68,7 @@
 {
     if (!_goodsPriceLabel)
     {
-        _goodsPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 45, 200, 18)];     //以后改宏定义
+        _goodsPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, 45, 50, 18)];     //以后改宏定义
         _goodsPriceLabel.font = [UIFont systemFontOfSize:16];                               //以后改宏定义
         _goodsPriceLabel.textColor = [UIColor redColor];                                    //以后改宏定义
     }
@@ -79,7 +79,7 @@
 {
     if (!_goodsPreferentPriceLabel)
     {
-        _goodsPreferentPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 45, 200, 18)];     //以后改宏定义
+        _goodsPreferentPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 45, 50, 18)];     //以后改宏定义
         _goodsPreferentPriceLabel.font = [UIFont systemFontOfSize:16];                               //以后改宏定义
         _goodsPreferentPriceLabel.textColor = [UIColor redColor];                                    //以后改宏定义
     }
@@ -170,7 +170,7 @@
 #if 0   //根据点击位置
     CGPoint tempPoint = [tap locationInView:RootView];
     
-    NSLog(@"%lf,%lf",tempPoint.x,tempPoint.y);
+//    NSLog(@"%lf,%lf",tempPoint.x,tempPoint.y);
 //    NSLog(@"%@",RootView);
 #endif
 
@@ -178,7 +178,6 @@
     //根据Button位置
     UIWindow * window=[[[UIApplication sharedApplication] delegate] window];
     CGRect rect=[_goodsAddButton convertRect:_goodsAddButton.bounds toView:window];
-    
     
     NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:_indexPath,@"indexPath",[NSString stringWithFormat:@"%lf",rect.origin.x],@"clickPointX",[NSString stringWithFormat:@"%lf",rect.origin.y],@"clickPointY",nil];
     
@@ -211,6 +210,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [super awakeFromNib];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

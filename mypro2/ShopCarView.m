@@ -42,6 +42,8 @@
         _moneyLabel.text = @"购物车是空的";
         _moneyLabel.textColor = [UIColor whiteColor];
         _moneyLabel.textAlignment = NSTextAlignmentRight;
+        
+        _moneyLabel.font = [UIFont systemFontOfSize:14.0];
     }
     return _moneyLabel;
 }
@@ -53,6 +55,8 @@
         _sureLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.frame.size.width/2, 0,self.frame.size.width/2, self.frame.size.height)];
         _sureLabel.textColor = [UIColor whiteColor];
         _sureLabel.textAlignment = NSTextAlignmentRight;
+        
+        _sureLabel.font = [UIFont systemFontOfSize:14.0];
     }
     return _sureLabel;
 }
@@ -75,7 +79,7 @@
     _shopCarPrice = price;
     
     self.moneyLabel.text = [NSString stringWithFormat:@"%@",price];
-    
+
     if ([[_shopCarPrice substringWithRange:NSMakeRange(2, _shopCarPrice.length-2)] intValue] >= [_sentPrice intValue])
     {
         self.sureButton.hidden = NO;
