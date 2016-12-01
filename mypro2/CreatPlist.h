@@ -12,4 +12,6 @@
 
 +(void)CreatGoodsPlist;
 
++(void)CreatUserinfoPlist;
+
 @end

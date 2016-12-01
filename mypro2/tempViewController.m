@@ -10,11 +10,11 @@
 #import "RootViewController.h"
 #import "CreatPlist.h"
 
-#import "ManageShopCar.h"
-#import "OpShopCar.h"
-
-#import "ManageOrder.h"
-#import "OpOrder.h"
+//#import "ManageShopCar.h"
+//#import "OpShopCar.h"
+//
+//#import "ManageOrder.h"
+//#import "OpOrder.h"
 
 #import "OrderViewController.h"
 
@@ -68,15 +68,20 @@
     return _shopAndGoodsModel;
 }
 
++ (void)initialize
+{
+    [CreatPlist CreatUserinfoPlist];
+}
+
 
 - (IBAction)buttonClick:(id)sender
 {
 //    [CreatPlist CreatGoodsPlist];
     
-    [OpShopCar creatTableForShopCar];
-    [OpOrder creatTableForOrder];
+//    [OpShopCar creatTableForShopCar];
+//    [OpOrder creatTableForOrder];
 
-    
+
 #if 1
     RootViewController *tempRoot = [[RootViewController alloc]init];
     tempRoot.shopAndGoodsModel = self.shopAndGoodsModel;
@@ -112,8 +117,7 @@
 
 - (IBAction)addMoney:(id)sender
 {
-    
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
+    NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"userinfo.plist"];
     
     NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
     

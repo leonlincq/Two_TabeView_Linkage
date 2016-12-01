@@ -119,5 +119,25 @@
 //    NSLog(@"%@",NSHomeDirectory());
 }
 
++(void)CreatUserinfoPlist
+{
+    NSMutableDictionary *tempDic = [NSMutableDictionary dictionary];
+    
+    [tempDic setObject:@"1000" forKey:@"余额"];
+    
+    NSArray *tempArray1 = @[@"福建",@"泉州",@"小林",@"12345678912"];
+    NSArray *tempArray2 = @[@"福建",@"厦门",@"小林",@"12345678912"];
+    NSArray *tempArray3 = @[@"福建",@"福州",@"小林",@"12345678912"];
+    
+    [tempDic setObject:@[tempArray1,tempArray2,tempArray3] forKey:@"地址"];
+    [tempDic setObject:@"3" forKey:@"地址组数"];
+    [tempDic setObject:@"123456" forKey:@"密码"];
+    [tempDic setObject:@"12345678912" forKey:@"手机号码"];
+    [tempDic setObject:@"小林" forKey:@"用户名"];
+    
+    [tempDic writeToFile:[[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"userinfo.plist"] atomically:YES];
+}
+
+
 
 @end

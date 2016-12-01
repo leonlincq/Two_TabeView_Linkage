@@ -173,7 +173,7 @@ typedef NS_ENUM(NSUInteger,OrderListViewState)
 -(OrderListViewState)searchOrderList
 {
 //    NSLog(@"%@",NSHomeDirectory());
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
+    NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"userinfo.plist"];
     
     NSDictionary *tempDic = [NSDictionary dictionaryWithContentsOfFile:path];
     

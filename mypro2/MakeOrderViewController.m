@@ -9,8 +9,8 @@
 #import "MakeOrderViewController.h"
 #import "CircleRevolve.h"
 
-#import "ManageOrder.h"
-#import "OpOrder.h"
+//#import "ManageOrder.h"
+//#import "OpOrder.h"
 
 #define tempCir_TAG         101
 #define tempNotiView_TAG    102
@@ -276,7 +276,7 @@
 #pragma mark - 读取登录信息
 -(NSString *)readUserNameByPlist
 {
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
+    NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"userinfo.plist"];
     
     NSDictionary *tempDic = [NSDictionary dictionaryWithContentsOfFile:path];
     
@@ -285,7 +285,7 @@
 
 -(NSString *)readMoneyByPlist
 {
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
+    NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"userinfo.plist"];
     
     NSDictionary *tempDic = [NSDictionary dictionaryWithContentsOfFile:path];
 
@@ -294,7 +294,7 @@
 
 -(NSUInteger)readAddressNumbByPlist
 {
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
+    NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"userinfo.plist"];
     
     NSDictionary *tempDic = [NSDictionary dictionaryWithContentsOfFile:path];
     
@@ -306,7 +306,7 @@
 
 -(NSString *)readAddressNameByPlistAtIndex:(NSUInteger)index
 {
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
+    NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"userinfo.plist"];
     
     NSDictionary *tempDic = [NSDictionary dictionaryWithContentsOfFile:path];
     
@@ -314,20 +314,21 @@
     
     NSArray *detailAddress = tempAddress[index];
     
-    NSString *address = [NSString  stringWithFormat:@"地址%ld : %@,%@,%@,%@",index+1,detailAddress[0],detailAddress[1],detailAddress[2],detailAddress[3]];
+    NSString *address = [NSString stringWithFormat:@"地址%ld : %@,%@,%@,%@",index+1,detailAddress[0],detailAddress[1],detailAddress[2],detailAddress[3]];
     
     return address;
 }
 #pragma mark - 修改登录信息
 -(void)changeMoneyByPlist:(NSUInteger)money
 {
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"userinfo" ofType:@"plist"];
+    NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"userinfo.plist"];
     
     NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
     
     NSUInteger myMoney = [[tempDic objectForKey:@"余额"]integerValue];
-    
+
     [tempDic setObject:[NSString stringWithFormat:@"%ld",myMoney - money] forKey:@"余额"];
+
     [tempDic writeToFile:path atomically:YES];
     
 }
@@ -381,51 +382,51 @@
     [self.view addSubview:tempNotiView];
     
     [self changeMoneyByPlist:([self countMoney] + [self readSentMoney])];
-    [self makeNewOrder];
+//    [self makeNewOrder];
     
     [self performSelector:@selector(backToRoot) withObject:nil afterDelay:2];
 }
 
 #pragma mark - 订单生产 判断订单号
--(void)makeNewOrder
-{
-    NSMutableArray *saveArray = [[NSMutableArray alloc]init];
-    ManageOrder *orderModel = [[ManageOrder alloc]init];
-    
-    orderModel.orderNum = @"1";     //设置订单号
-    while (1)
-    {
-        [OpOrder selectOrderByWho:orderModel withStatu:OrderSelect_orderNum andSaveArray:&saveArray];
-        
-        if (saveArray.count == 0)
-        {
-            break;
-        }
-        else
-        {
-            orderModel.orderNum = [NSString stringWithFormat:@"%ld",[orderModel.orderNum integerValue]+1];
-        }
-    }
-    
-    orderModel.orderState       = @"等待收货";      //订单状态
-    orderModel.orderEva         = nil;          //订单评价
-    orderModel.orderEvaStart    = nil;          //订单评价星级
-    orderModel.buyer            = [self readUserNameByPlist];   //购买者
-    orderModel.shopName         = self.storeName;               //商店名字
-    orderModel.address          = [self readAddressNameByPlistAtIndex:self.checkAddress];   //收货地址
-    
-    for (NSUInteger i = 0; i < self.allChooseGoods.count; i++)
-    {
-        NSDictionary *tempDic = self.allChooseGoods[i];
-        
-        orderModel.goodName     = [tempDic objectForKey:@"goodsName"];  //商品名字
-        orderModel.goodPrice    = [tempDic objectForKey:@"price"];      //商品价格
-        orderModel.goodNum      = [tempDic objectForKey:@"numb"];        //商品数量
-        orderModel.goodAllMoney = [tempDic objectForKey:@"money"];      //商品总金额
-        
-        [OpOrder addToOrder:orderModel];
-    }
-}
+//-(void)makeNewOrder
+//{
+//    NSMutableArray *saveArray = [[NSMutableArray alloc]init];
+//    ManageOrder *orderModel = [[ManageOrder alloc]init];
+//    
+//    orderModel.orderNum = @"1";     //设置订单号
+//    while (1)
+//    {
+//        [OpOrder selectOrderByWho:orderModel withStatu:OrderSelect_orderNum andSaveArray:&saveArray];
+//        
+//        if (saveArray.count == 0)
+//        {
+//            break;
+//        }
+//        else
+//        {
+//            orderModel.orderNum = [NSString stringWithFormat:@"%ld",[orderModel.orderNum integerValue]+1];
+//        }
+//    }
+//    
+//    orderModel.orderState       = @"等待收货";      //订单状态
+//    orderModel.orderEva         = nil;          //订单评价
+//    orderModel.orderEvaStart    = nil;          //订单评价星级
+//    orderModel.buyer            = [self readUserNameByPlist];   //购买者
+//    orderModel.shopName         = self.storeName;               //商店名字
+//    orderModel.address          = [self readAddressNameByPlistAtIndex:self.checkAddress];   //收货地址
+//    
+//    for (NSUInteger i = 0; i < self.allChooseGoods.count; i++)
+//    {
+//        NSDictionary *tempDic = self.allChooseGoods[i];
+//        
+//        orderModel.goodName     = [tempDic objectForKey:@"goodsName"];  //商品名字
+//        orderModel.goodPrice    = [tempDic objectForKey:@"price"];      //商品价格
+//        orderModel.goodNum      = [tempDic objectForKey:@"numb"];        //商品数量
+//        orderModel.goodAllMoney = [tempDic objectForKey:@"money"];      //商品总金额
+//        
+//        [OpOrder addToOrder:orderModel];
+//    }
+//}
 
 -(void)backToRoot
 {
