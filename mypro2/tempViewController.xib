@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,39 +18,7 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9GF-v0-XG5">
-                    <rect key="frame" x="110" y="234" width="100" height="100"/>
-                    <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.3530669341216216" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="qPw-Ay-Dka"/>
-                        <constraint firstAttribute="height" constant="100" id="wkp-uO-Dcd"/>
-                    </constraints>
-                    <state key="normal" title="跳转"/>
-                    <connections>
-                        <action selector="buttonClick:" destination="-1" eventType="touchUpInside" id="4pL-k7-WVF"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvM-x8-9Oq">
-                    <rect key="frame" x="135" y="468" width="50" height="50"/>
-                    <color key="backgroundColor" red="1" green="0.59319216574439781" blue="0.54332348776954875" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="0ND-1m-UqG"/>
-                        <constraint firstAttribute="width" constant="50" id="TnX-eb-rJ4"/>
-                    </constraints>
-                    <state key="normal" title="充值"/>
-                    <connections>
-                        <action selector="addMoney:" destination="-1" eventType="touchUpInside" id="WTp-kT-Wo1"/>
-                    </connections>
-                </button>
-            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="9GF-v0-XG5" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="V3R-zz-7JO"/>
-                <constraint firstItem="9GF-v0-XG5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bKp-kD-s4S"/>
-                <constraint firstItem="hvM-x8-9Oq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jMu-tM-oqk"/>
-                <constraint firstAttribute="bottom" secondItem="hvM-x8-9Oq" secondAttribute="bottom" constant="50" id="xWk-9u-Wmo"/>
-            </constraints>
         </view>
     </objects>
 </document>

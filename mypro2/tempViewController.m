@@ -20,116 +20,119 @@
 
 
 
-@interface tempViewController ()
+@interface tempViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic,strong) UITableView *myTabView;
+
+@property (nonatomic,strong) NSArray *myShopArray;
 
 @end
 
 @implementation tempViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
-
--(SectionThirdModel *)shopAndGoodsModel
-{
-    if (!_shopAndGoodsModel)
-    {
-        _shopAndGoodsModel = [[SectionThirdModel alloc]init];
-        
-//        _shopAndGoodsModel.actionInfo1  = @"活动1。。。";
-//        _shopAndGoodsModel.actionInfo2  = @"活动2。。。!!!~~~@@@###$$$";
-//        _shopAndGoodsModel.actionInfo3  = @"活动3。。。!@#!$!@$!@#!#";
-//        _shopAndGoodsModel.actionInfo4  = @"活动4。。。";
-        
-        _shopAndGoodsModel.storeName    = @"转转乐(湖里万达店)";
-//        _shopAndGoodsModel.storeName    = @"意享披萨(钟宅店)";
-//        _shopAndGoodsModel.storeName    = @"QQ脆皮鸡排";
-//        _shopAndGoodsModel.storeName    = @"骨之味";
-//        _shopAndGoodsModel.storeName    = @"甜丫丫";
-//        _shopAndGoodsModel.storeName    = @"正宗骨汤麻辣烫";
-//        _shopAndGoodsModel.storeName    = @"食尚煲仔饭(蔡塘店)";
-//        _shopAndGoodsModel.storeName    = @"鲜芋仙";
-//        _shopAndGoodsModel.storeName    = @"老塞行动咖啡";
-//        _shopAndGoodsModel.storeName    = @"85°C";
-        
-//        _shopAndGoodsModel.storeImage   = @"store_name03";
-//        _shopAndGoodsModel.sell         = @"月销售：30单";
-//        _shopAndGoodsModel.comment      = @"评论:很好";
-//        _shopAndGoodsModel.sellPrace    = @"15";
-//        _shopAndGoodsModel.maxTime      = @"30";
-//        _shopAndGoodsModel.distance     = @"10KM";
-        
-        
-
-        
-    }
-    return _shopAndGoodsModel;
-}
 
 + (void)initialize
 {
     [CreatPlist CreatUserinfoPlist];
 }
 
-
-- (IBAction)buttonClick:(id)sender
+-(UITableView *)myTabView
 {
-//    [CreatPlist CreatGoodsPlist];
-    
-//    [OpShopCar creatTableForShopCar];
-//    [OpOrder creatTableForOrder];
-
-
-#if 1
-    RootViewController *tempRoot = [[RootViewController alloc]init];
-    tempRoot.shopAndGoodsModel = self.shopAndGoodsModel;
-    [self presentViewController:tempRoot animated:YES completion:^{
-        
-    }];
-#else
-
-    OrderViewController *tempRoot1 = [[OrderViewController alloc]init];
-    tempRoot1.title = @"ONE_1";
-    UINavigationController *orderNavi1 = [[UINavigationController alloc]initWithRootViewController:tempRoot1];
-    
-    OrderViewController *tempRoot2 = [[OrderViewController alloc]init];
-    tempRoot2.title = @"TWO_2";
-    
-    OrderViewController *tempRoot3 = [[OrderViewController alloc]init];
-    tempRoot3.title = @"THREE_3";
-    UINavigationController *orderNavi3 = [[UINavigationController alloc]initWithRootViewController:tempRoot3];
-    
-    OrderViewController *tempRoot4 = [[OrderViewController alloc]init];
-    tempRoot4.title = @"FOUR_4";
-    
-    
-    UITabBarController *temp = [[UITabBarController alloc]init];
-    
-    [temp setViewControllers:@[orderNavi1,tempRoot2,orderNavi3,tempRoot4]];
-    
-    [self presentViewController:temp animated:YES completion:^{
-        
-    }];
-#endif
+    if (!_myTabView)
+    {
+        _myTabView = [[UITableView alloc]initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, SCREEN_HEIGHT - 20) style:UITableViewStylePlain];
+        _myTabView.dataSource = self;
+        _myTabView.delegate = self;
+    }
+    return _myTabView;
 }
 
-- (IBAction)addMoney:(id)sender
+-(NSArray *)myShopArray
 {
-    NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"userinfo.plist"];
-    
-    NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-    
-    
-    [tempDic setObject:@"1000" forKey:@"余额"];
-    
-    [tempDic writeToFile:path atomically:YES];
+    if (!_myShopArray)
+    {
+        _myShopArray = [[NSArray alloc]initWithObjects:@"转转乐(湖里万达店)",@"意享披萨(钟宅店)",@"QQ脆皮鸡排",@"骨之味",@"甜丫丫",@"正宗骨汤麻辣烫",@"食尚煲仔饭(蔡塘店)",@"鲜芋仙",@"老塞行动咖啡",@"85°C",nil];
+    }
+    return _myShopArray;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 11;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *myCellID = @"homeCellID";
+    
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellID];
+    if (!cell)
+    {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:myCellID];
+        
+        if (indexPath.row <10)
+        {
+            cell.textLabel.text = self.myShopArray[indexPath.row];
+            cell.textLabel.textColor = [UIColor blackColor];
+        }
+        else
+        {
+            cell.textLabel.text = @"充值";
+            cell.textLabel.textColor = [UIColor redColor];
+        }
+    }
+    
+    return cell;
 }
 
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row < 10)
+    {
+        
+        _shopAndGoodsModel = [[SectionThirdModel alloc]init];
+        _shopAndGoodsModel.storeName = self.myShopArray[indexPath.row];
+        
+        RootViewController *tempRoot = [[RootViewController alloc]init];
+        tempRoot.shopAndGoodsModel = _shopAndGoodsModel;
+        
+        [self presentViewController:tempRoot animated:YES completion:^{
+            
+        }];
+    }
+    else
+    {
+        NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]  stringByAppendingPathComponent:@"userinfo.plist"];
+        
+        NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+        
+        [tempDic setObject:@"1000" forKey:@"余额"];
+        
+        BOOL isOK = [tempDic writeToFile:path atomically:YES];
+        
+        
+        UIAlertController *tempAlert = [UIAlertController alertControllerWithTitle:@"充值" message:isOK?@"充值成功":@"失败" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *tempAlertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [tempAlert addAction:tempAlertAction];
+        [self presentViewController:tempAlert animated:YES completion:^{
+            
+        }];
+    }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    
+    [self.view addSubview:self.myTabView];
+}
 
 
 - (void)didReceiveMemoryWarning {

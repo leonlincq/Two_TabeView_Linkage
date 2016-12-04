@@ -17,10 +17,16 @@
 @property (nonatomic, strong) UILabel       *goodsPreferentPriceLabel;
 
 @property (nonatomic, strong) UILabel       *goodsNumbLabel;
+
+@property (nonatomic, strong) UIButton      *buttonMask;
+
 @end
 
 
 @implementation RightTableViewCell
+
+
+
 
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -28,6 +34,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
+        [self.contentView addSubview:self.buttonMask];
+        
         [self.contentView addSubview:self.goodsImageView];
         [self.contentView addSubview:self.goodsNameLabel];
         [self.contentView addSubview:self.goodsPriceLabel];
@@ -38,7 +46,8 @@
         [self.contentView addSubview:self.goodsSubButton];
         
         [self.contentView addSubview:self.goodsNumbLabel];
-        
+
+
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
@@ -117,6 +126,17 @@
     return _goodsSubButton;
 }
 
+- (UIButton *)buttonMask
+{
+    if (!_buttonMask)
+    {
+        _buttonMask = [[UIButton alloc]init];
+        _buttonMask.backgroundColor = [UIColor clearColor];
+    }
+    return _buttonMask;
+}
+
+
 -(UILabel *)goodsNumbLabel
 {
     if (!_goodsNumbLabel)
@@ -187,9 +207,11 @@
 -(void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-    _goodsAddButton.frame = CGRectMake(frame.size.width-5-25,frame.size.height-5-25, 25,25);
-    _goodsSubButton.frame = CGRectMake(frame.size.width-5-25-25-25,frame.size.height-5-25, 25,25);
-    _goodsNumbLabel.frame = CGRectMake(frame.size.width-5-25-25, frame.size.height-5-25, 25, 25);
+    self.goodsAddButton.frame = CGRectMake(frame.size.width-5-25,frame.size.height-5-25, 25,25);
+    self.goodsSubButton.frame = CGRectMake(frame.size.width-5-25-25-25,frame.size.height-5-25, 25,25);
+    self.goodsNumbLabel.frame = CGRectMake(frame.size.width-5-25-25, frame.size.height-5-25, 25, 25);
+    
+    self.buttonMask.frame = CGRectMake(frame.size.width-5-25-25-25-5,0, 5+25+25+25+5,frame.size.height);
 }
 
 -(void)setGoodsNumb:(NSString *)numb
